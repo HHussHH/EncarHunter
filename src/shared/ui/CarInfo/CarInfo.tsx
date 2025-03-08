@@ -1,7 +1,7 @@
 import "./CarInfo.scss";
 import {FC, ReactNode} from "react";
 import TelegramIcon from "@/shared/assets/DetailsCard/TelegramIcon.svg?react"
-import WhatsAppIcon from "@/shared/assets/DetailsCard/WhatsAppIcon.svg?react"
+import WhatsAppIcon from "@/shared/assets/DetailsCard/WhatsappIcon.svg.svg?react"
 
 interface ICarInfoProps {
   children?: ReactNode
