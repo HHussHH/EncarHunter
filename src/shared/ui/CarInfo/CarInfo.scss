@@ -1,0 +1,93 @@
+.CarInfo {
+  width: 100%;
+  min-height: 192px;
+  border-radius: 20px;
+  background: var(--card-bg-color);
+  padding:15px;
+  &__notice{
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  &__price{
+    width: max-content;
+    font-weight: bold;
+    position: relative;
+    &::before{
+      content: '';
+      position: absolute;
+      display: block;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background-color: var(--second-color-emphasis);
+      opacity: 0.4;
+    }
+  }
+  &__list{
+
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    margin: 15px 0 0 0;
+  }
+  &__el{
+    width: 100%;
+    height: 33px;
+
+    display: flex;
+    justify-content: space-between;
+
+   &:not(:last-child){
+     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+   }
+    &:last-child{
+      align-items: flex-end;
+      height: max-content;
+    }
+  }
+  &__title,
+  &__value{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--primary-text-color);
+    @media (max-width: 350px) {
+      font-size: 12px;
+    }
+  }
+  &__title{
+    opacity: .6;
+  }
+  &__info{
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  &__btns{
+    margin-top: 15px;
+    display: flex;
+    gap:8px;
+
+    button{
+      width: 100%;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border:none;
+
+      font-size: 16px;
+      color:#fff;
+      font-weight: bold;
+
+      gap:7px;
+      &:first-child{
+        background: #25D366;
+      }
+      &:last-child{
+        background: #29A9EB;
+      }
+    }
+  }
+}

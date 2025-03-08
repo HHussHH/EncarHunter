@@ -1,0 +1,76 @@
+.Button{
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+  gap:8px;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility:    hidden;
+  -ms-backface-visibility:     hidden;
+
+  span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  &__theme{
+    &-base{
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--primary-text-color);;
+    }
+    &-blue{
+      background: var(--second-color-emphasis);
+      color: #fff;
+      fill:  var(--second-color-emphasis);
+      border-radius: 16px;
+
+    }
+    &-green,  &-greenOp{
+      background: #00C63F;
+      color: var(--primary-text-color);
+      fill:  var( --primary-text-color);
+      font-weight: bold;
+      border-radius: 16px;
+    }
+    &-greenOp{
+      background: rgba(0, 198, 63, 0.2);
+    }
+    &-yellow{
+      background: rgba(254, 208, 0, 0.1);
+      color:#C69800;
+      font-weight: bold;
+    }
+  }
+
+  &__size{
+    &-base{
+
+      width: 100%;
+      height: 40px;
+    }
+    &-medium{
+      width: 100%;
+      height: 50px;
+      span{
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+    &-big{
+      width: 100%;
+      height: 56px;
+      span{
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+  &__onClick{
+    opacity: 0.6;
+    transition: opacity 0.40s linear;
+  }
+}
+

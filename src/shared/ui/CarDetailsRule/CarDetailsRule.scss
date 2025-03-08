@@ -1,0 +1,14 @@
+.CarDetailsRule {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  &__title{
+    font-weight: bold;
+    color:#fff;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 15px;
+  }
+  &__list{
+    font-size: 14px;
+  }
+}

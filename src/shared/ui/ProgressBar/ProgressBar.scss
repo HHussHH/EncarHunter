@@ -1,0 +1,8 @@
+.ProgressBar{
+position: absolute;
+top: 0;
+left: 0;
+  height:2px;
+background-color: var(--color-emphasis);
+transition: width 0.3s ease
+}

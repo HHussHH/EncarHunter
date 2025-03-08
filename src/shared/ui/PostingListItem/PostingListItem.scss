@@ -1,0 +1,48 @@
+.PostingListItem{
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--primary-bg-color);
+  font-size: var(--primary-text-size);
+  font-weight: bold;
+  padding-inline: 15px;
+
+  z-index: 100;
+  transition: scale .2s linear;
+  &__between{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    justify-content: space-between;
+  }
+  &__left{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  &__checkbox{
+    width: 24px;
+    height: 24px;
+    background-color: var(--secondary-bg-color);
+    border-radius: 4px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-active{
+      background-color:#00C63F;
+    }
+  }
+  &__label{
+    font-size: 16px;
+  }
+  &-active{
+    color:#00C63F;
+    background-color: rgba(0, 198, 63, 0.12);
+    //animation: selectedEl 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  &-selected{
+    color:#00C63F;
+    //animation: widthRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}

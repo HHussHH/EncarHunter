@@ -1,0 +1,75 @@
+.PreferencesSelector{
+  display:flex;
+  flex-direction: column;
+  gap:10px;
+  &__title{
+    padding-inline: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color:var(--primary-text-color)
+  }
+  &__arrow{
+    padding: 5px;
+    width: 12px;
+    height: 12px;
+    border:none;
+    border-bottom: 2px solid var(--primary-text-color);
+    border-left: 2px solid var(--primary-text-color);
+    rotate:(312deg);
+  }
+  &__field{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 53px;
+    width: 100%;
+    border:none;
+    background: #151515;
+    padding:15px;
+    font-size: 16px;
+    border-radius: 10px;
+    &:focus-visible{
+      outline: 1px solid var(--element-bg)
+    }
+  }
+  &__placeholder{
+    color:var(--secondary-bg-color);
+  }
+&__description{
+  font-size: 14px;
+  font-weight: 400;
+  color:rgba(68, 68, 68, 1);
+}
+  &__placeholder{
+    white-space: nowrap;          /* Оставляет текст в одну строку */
+    overflow: hidden;             /* Скрывает лишний текст */
+    text-overflow: ellipsis;
+  }
+  &__value{
+    color:var(--primary-text-color);
+    font-weight: bold;
+    white-space: nowrap;          /* Оставляет текст в одну строку */
+    overflow: hidden;             /* Скрывает лишний текст */
+    text-overflow: ellipsis;
+  }
+  &-yellow{
+    color:#C69800;
+    font-weight: bold;
+    border-color:#c69800
+  }
+  &-hold-yellow{
+    color:#C69800;
+    font-weight: bold;
+    &-isWhite{
+      color:#fff;
+      font-weight: 400;
+    }
+  }
+  &-bg-yellow{
+      background-color: rgba(254, 208, 0, 0.1)
+  }
+  &-bg-hold-yellow{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+}

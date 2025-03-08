@@ -1,0 +1,96 @@
+.ForBusinessPage{
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding-bottom: inherit;
+  height: 100vh;
+
+  &__banner{
+    margin: 0 auto 15px;
+    height: 230px;
+    padding: 5px;
+    border-radius: 40px;
+    flex: 0 0 auto;
+  }
+  &__info{
+    display: flex;
+    flex-direction: column;
+    padding-inline: 20px;
+    gap:10px;
+  }
+  &__title{
+    max-width: 93%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26.5px;
+  }
+  &__subtitle{
+    display: flex;
+    align-items: center;
+  }
+  &__desc{
+    line-height: 17px;
+    max-width: 60%;
+    font-size: 14px;
+    opacity: .6;
+
+    @media (max-width: 360px) {
+      max-width: 60%;
+      font-size: 12px;
+    }
+  }
+  &__announce{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    background: rgba(254, 208, 0, 0.2);
+    height: 34px;
+    border-radius: 10px;
+    color: var(--navbar-color);
+    font-size: 12px;
+
+    @media (max-width: 360px) {
+      width: 120px;
+      font-size: 10px;
+    }
+  }
+
+&__cards{
+  margin-top: 30px;
+  padding-inline: 10px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+  &__card{
+    position: relative;
+    width: 100%;
+    min-height: 175px;
+    padding: 15px 10px;
+    border-radius: 16px;
+    background-color: #191919;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    &__icon{
+      position: absolute;
+      top:0;
+      right:-40px;
+    }
+    &__title{
+      line-height: 24px;
+      font-size: 20px;
+      max-width: 70%;
+    }
+    &__desc{
+      line-height: 17px;
+      max-width: 80%;
+      font-size: 14px;
+      opacity: .6;
+    }
+
+  }
+}

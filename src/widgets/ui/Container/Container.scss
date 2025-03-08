@@ -1,0 +1,15 @@
+.Container {
+  height: 100dvh;
+  padding: 5px 5px 0;
+  &__btn{
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: var(--navbar-height);
+    padding-inline:5px;
+    left: 0;
+    bottom: 10px;
+  }
+}
+
+

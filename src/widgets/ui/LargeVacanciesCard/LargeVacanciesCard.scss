@@ -1,0 +1,72 @@
+.LargeCard{
+  padding: 15px;
+  width: 100%;
+  background-color: #151515;
+  border-radius: 20px;
+  border:none;
+  display: flex;
+  flex-direction: column;
+  &__createdAt{
+    padding-inline:15px;
+    margin: 6px 0;
+    font-size: 12px;
+    color:#fff;
+    opacity: 0.6;
+  }
+
+  &__body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 90%;
+  }
+
+  &__price{
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    margin-bottom: 5px;
+  }
+
+  &__title{
+    text-transform:capitalize;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--primary-text-color);
+    margin-bottom: 10px;
+  }
+
+  &__details{
+    display: flex;
+    gap:4px;
+    flex-wrap: wrap;
+    margin: 0 0 15px;
+  }
+
+  &__description{
+    max-width: 86%;
+    font-size: 12px;
+    color:#fff;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-bottom: 15px;
+  }
+
+  &__map{
+    border-radius: 8px;
+    width: 120px;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  &__footer{
+    display: flex;
+    gap:15px;
+  }
+}

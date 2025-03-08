@@ -1,0 +1,17 @@
+.CarsPage {
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100dvh;
+  padding: inherit;
+  &__header{
+    display: flex;
+    gap:10px;
+  }
+  &__test{
+    width: 100%;
+    height: 400px;
+  }
+}

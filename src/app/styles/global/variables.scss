@@ -1,0 +1,27 @@
+:root{
+
+
+  //colors
+  --color-emphasis:#D23444;
+  --second-color-emphasis: #3C5EB2;
+  --primary-bg-color: #000000;
+  --primary-text-color:#fff;
+  --secondary-bg-color:#444444;
+  --element-bg:#00C63F;
+  //fonts
+  --primary-font: 'inter','sans-serif';
+  --primary-title-size: 24px;
+  --primary-text-size: 16px;
+
+  //navbar
+  --navbar-height: 72px;
+
+  //height + 10px bottom margin
+  --navbar-size: calc(var(--navbar-height));
+  --navbar-color:rgba(254, 208, 0, 1);
+  --navbar-bg:#020204;
+
+  //card
+  --card-bg-color:#151515;
+
+}

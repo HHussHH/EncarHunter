@@ -1,0 +1,39 @@
+.RadioButton{
+  display: flex;
+  gap:10px;
+  align-items: center;
+
+  &__radio{
+    width:24px;
+    height:24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.1s linear;
+
+    background:var(--secondary-bg-color);
+    &-active{
+      background: var(--element-bg);
+
+    }
+    &-selected{
+      width: 10px;
+      height: 10px;
+      background: var(--primary-text-color);
+      border-radius: 50%;
+    }
+  }
+
+  &__label{
+    font-size: 16px;
+    font-weight: bold;
+    color:var(--secondary-bg-color);
+    &-active{
+      color:var(--element-bg);
+    }
+    @media (max-width: 350px) {
+      font-size: 14px;
+    }
+  }
+}

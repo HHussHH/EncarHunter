@@ -1,0 +1,153 @@
+@use "variables";
+@use 'normalize.css'; // Подключаем normalize.css
+
+@font-face {
+  font-family: "Bliss Pro";
+  src: url("@assets/fonts/Bliss Pro/blisspro_heavy.otf") format("opentype");
+}
+:root{
+  color:var(--primary-text-color);
+  background:var(--primary-bg-color);
+  font-family: var(--primary-font), sans-serif;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-touch-callout: none; /* Отключаем меню при долгом нажатии на iOS */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Убираем внутренние отступы */
+ul,
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  -webkit-user-select: none; /* Для Safari и iOS */
+  -moz-user-select: none; /* Для Firefox */
+  -ms-user-select: none; /* Для Internet Explorer/Edge */
+  user-select: none;
+}
+
+html,
+body{
+overflow: hidden;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@keyframes ScaleIn {
+  0%{
+    scale:0;
+  }
+  100%{
+    scale:1;
+  }
+}
+
+@keyframes rightToLeft {
+  0% {
+    transform: translateX(80%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes widthRight {
+  0%{
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(10%);
+
+  }
+  70%{
+    transform: translateX(0%);
+  }
+  90%{
+    transform: translateX(2%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
+@keyframes widthUp {
+  0% {
+    transform: translateY(80%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ButtonAnim {
+  0%{
+    scale:1;
+    opacity: 1;
+  }
+  50%{
+    scale:0.95;
+    opacity: 0.8;
+  }
+  100%{
+    scale:1;
+    opacity: 1;
+  }
+}
+
+
