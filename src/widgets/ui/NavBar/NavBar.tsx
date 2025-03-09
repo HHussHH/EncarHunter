@@ -16,13 +16,25 @@ export const NavBar:FC<INavBarProps> = () => {
 	<nav className="NavBar" style={{bottom: padBottom && padBottom > 0 ? padBottom - 10 : '24px'}}>
 		<ul className="NavBar__body">
 		  <NavElem path={"cars"} label={"Авто в наличие"}>
-			<CarsIcon width={28} height={28}/>
+			{/*<CarsIcon width={28} height={28}/>*/}
+			<div className={"NavBar__el"}>
+			  🚘
+			</div>
 		  </NavElem>
 		  <NavElem path={"subscribe"} label={"Подписка"}>
-			<BellIcon width={28} height={28}/>
+			{/*<BellIcon width={28} height={28}/>*/}
+			<div className={"NavBar__el"}>
+			  🔔
+			</div>
+
 		  </NavElem>
 		  <NavElem path={"AboutUs"} label={"О Нас"}>
-			<AboutUs width={28} height={28}/>
+			{/*<AboutUs width={28} height={28}/>*/}
+			<div className={"NavBar__el"}>
+			  🏢
+			</div>
+
+
 		  </NavElem>
 		</ul>
 	</nav>
