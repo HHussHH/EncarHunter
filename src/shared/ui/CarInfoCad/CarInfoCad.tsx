@@ -14,16 +14,19 @@ export const CarInfoCad:FC<ICarInfoCadProps> = (props) => {
   const {price,mileage,engine_capacity,drive,production,...otherProps} = props
 
   const details = [production,mileage,engine_capacity,drive]
-	const [load,setLoad] = useState<boolean>(false);
+	const [loaded,setLoaded] = useState<boolean>(false);
   return (
 	<div className="CarInfoCad" {...otherProps}>
 		<div className="CarInfoCad__body">
-		 <div className="CarInfoCad__image">
-		   {
-			 load ? <img onLoad={() => setLoad(true)} src={carImg} alt={'carImg.png'}/> : <div className={"CarInfoCad__image__placeholder"}/>
-		   }
-
-		 </div>
+		  <div className="CarInfoCad__image">
+			{!loaded && <div className="CarInfoCad__image__placeholder" />}
+			<img
+			  src={carImg}
+			  alt="car"
+			  onLoad={() => setLoaded(true)}
+			  style={{ display: loaded ? "block" : "none" }}
+			/>
+		  </div>
 		<div className="CarInfoCad__content">
 		  <h2 className="CarInfoCad__title">
 			Hyundai Palisade Calligraphy
