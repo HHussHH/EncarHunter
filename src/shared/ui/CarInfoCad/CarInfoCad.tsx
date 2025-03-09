@@ -1,7 +1,7 @@
 import "./CarInfoCad.scss";
-import {FC, Fragment, HTMLProps} from "react";
+import {FC, Fragment, HTMLProps, useState} from "react";
 import {PositionDetails} from "@/shared/ui";
-import placeholder from "@/shared/assets/CarsList/CardPlaceHolder.png"
+import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png"
 interface ICarInfoCadProps extends HTMLProps<HTMLDivElement>  {
   price:number;
   mileage:string;
@@ -14,13 +14,13 @@ export const CarInfoCad:FC<ICarInfoCadProps> = (props) => {
   const {price,mileage,engine_capacity,drive,production,...otherProps} = props
 
   const details = [production,mileage,engine_capacity,drive]
-
+	const [load,setLoad] = useState<boolean>(false);
   return (
 	<div className="CarInfoCad" {...otherProps}>
 		<div className="CarInfoCad__body">
 		 <div className="CarInfoCad__image">
 		   {
-			 placeholder ? <img src={placeholder} alt={'PlaceHolder.png'}/> : <div className={"CarInfoCad__image__placeholder"}/>
+			 load ? <img onLoad={() => setLoad(true)} src={carImg} alt={'carImg.png'}/> : <div className={"CarInfoCad__image__placeholder"}/>
 		   }
 
 		 </div>
