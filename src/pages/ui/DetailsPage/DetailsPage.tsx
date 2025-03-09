@@ -43,12 +43,13 @@ interface IDetailsPageProps{
 			</div>
  				 <CarInfo/>
 		  <CarDetailsRule/>
-		  <div className='DetailsPage__CarSchema'>
-			<img src={CarSchema} alt={'CarSchema.png'}/>
-		  </div>
 		  <div className='DetailsPage__btns'>
 			<button>Загрузить историю автомобиля в Корее</button>
 			<button>Проверить это объявление на ENCAR</button>
+		  </div>
+		  <div className='DetailsPage__CarSchema'>
+			<h1 className='DetailsPage__CarSchema__title'>Состояние кузова:</h1>
+			<img src={CarSchema} alt={'CarSchema.png'}/>
 		  </div>
 			</div>
 </div>

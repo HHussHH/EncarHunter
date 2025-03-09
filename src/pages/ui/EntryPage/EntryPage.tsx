@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {ProgressBar} from "@/shared/ui";
-import LogoSrc from "@assets/EntryPage/Logo.svg";
+import LogoIcon from "@/shared/assets/others/KoreaFlag.svg?react";
 import demo from "@assets/EntryPage/car-1.png";
+import LogoTextIcon from "@/shared/assets/EntryPage/EncarHunter.svg?react"
 import carIcon from "@assets/EntryPage/CarIcon.svg";
 import "./EntryPage.scss";
 
@@ -38,11 +39,8 @@ export const EntryPage = () => {
 	<div className="EntryPage">
 	  <ProgressBar progress={progress} />
 	  <div className="EntryPage__logo">
-			<img src={LogoSrc} alt="Logo" />
-		<label className="EntryPage__logo__label">
-		  Encar
-		  <span>Hunter</span>
-		</label>
+		<LogoIcon width={80} height={80} />
+		<LogoTextIcon/>
 	  </div>
 	  <div className="EntryPage__demo">
 		<img src={demo} alt={"demo"} />

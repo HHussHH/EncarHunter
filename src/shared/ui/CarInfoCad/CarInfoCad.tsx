@@ -19,7 +19,10 @@ export const CarInfoCad:FC<ICarInfoCadProps> = (props) => {
 	<div className="CarInfoCad" {...otherProps}>
 		<div className="CarInfoCad__body">
 		 <div className="CarInfoCad__image">
-		   <img src={placeholder} alt={'PlaceHolder.png'}/>
+		   {
+			 placeholder ? <img src={placeholder} alt={'PlaceHolder.png'}/> : <div className={"CarInfoCad__image__placeholder"}/>
+		   }
+
 		 </div>
 		<div className="CarInfoCad__content">
 		  <h2 className="CarInfoCad__title">
