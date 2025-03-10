@@ -23,8 +23,24 @@
     margin-bottom: 10px;
 
     position: relative;
+    overflow: hidden;
+    &__img{
+      width: 100%;
+      height: 100%;
 
+      &-fide{
+        animation: fadeInOut .4s ease;
+      }
+    }
+    &__count{
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+    }
     &__arrow{
+      &:active{
+        animation: arrowClick 0.5s ease-in-out;
+      }
       &-r{
         position: absolute;
         top:50%;
@@ -117,3 +133,23 @@
   }
 }
 
+@keyframes arrowClick {
+  0%{
+    opacity:0.4
+  }
+  100%{
+    opacity:1
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

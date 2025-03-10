@@ -5,6 +5,10 @@ import {Button, CarInfo, PositionDetails} from "@/shared/ui";
 import {useNavigate, useParams} from "react-router-dom";
 import {CarDetailsRule} from "@/shared/ui/CarDetailsRule/CarDetailsRule.tsx";
 import CarSchema from "@/shared/assets/DetailsCard/CarShema.png"
+import slide1 from "@/shared/assets/DetailsCard/slide1.jpg"
+import slide2 from "@/shared/assets/DetailsCard/slide2.jpg"
+import slide3 from "@/shared/assets/DetailsCard/slide3.jpg"
+import slide4 from "@/shared/assets/DetailsCard/slide4.jpg"
 import LeftArrow from "@/shared/assets/DetailsCard/LeftArrow.svg?react"
 import RightArrow from "@/shared/assets/DetailsCard/RightArrow.svg?react"
 interface IDetailsPageProps{
@@ -45,6 +49,45 @@ interface IDetailsPageProps{
 	 };
    }, []);
 
+   const [slide, setSlide] = useState(0)
+
+   const sliderArr = [
+	 {img:slide1,
+	   place:0,
+	 },
+	 {img:slide2,
+	   place:1,
+	 },
+	 {img:slide3,
+	   place:2,
+	 },
+	 {img:slide4,
+	   place:3,
+	 }
+   ]
+
+   const handleNextSlide = () => {
+	 if(slide === sliderArr.length - 1)
+	   setSlide(0)
+	 else{
+	   setSlide(prev => prev +1)
+	 }
+   }
+
+   const handlePrevSlide = () => {
+	 if(slide === 0)
+	   setSlide(sliderArr.length - 1)
+	 else{
+	   setSlide(prev => prev - 1)
+	 }
+   }
+
+   const handleImageLoad = (e:any) => {
+	 const img = e.target;
+	 img.classList.remove('DetailsPage__slider__img-fade'); // Убираем анимацию
+	 void img.offsetWidth; // Форсируем перерисовку
+	 img.classList.add('DetailsPage__slider__img-fade'); // Добавляем анимацию
+   };
    return (
 	   <div className="DetailsPage">
 		<div className="DetailsPage__body">
@@ -61,13 +104,14 @@ interface IDetailsPageProps{
 						</ul>}
 		  </div>
 			<div className="DetailsPage__slider">
-				<div className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-l'}>
+				<div onClick={handlePrevSlide} className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-l'}>
 				  <LeftArrow/>
 				</div>
-				<div className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-r'}>
+				<div onClick={handleNextSlide} className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-r' }>
 				  <RightArrow/>
 				</div>
-			  Slider. Будет скоро =)
+			  	<img onLoad={handleImageLoad} className={'DetailsPage__slider__img'} src={sliderArr.find(el => el.place === slide)?.img} alt={'slider-img'}/>
+			  <span className={'DetailsPage__slider__count'}>{slide + 1} из {sliderArr.length}</span>
 			</div>
  				 <CarInfo/>
 		  <CarDetailsRule/>

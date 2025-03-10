@@ -15,12 +15,9 @@ export const CarInfo:FC<ICarInfoProps> = () => {
 	  <p className={"CarInfo__notice"}>Предварительная стоимость под ключ</p>
 	  <h1 className={"CarInfo__price"}>{price.toLocaleString("ru-RU")} ₽</h1>
 	  <button className="CarInfo__shareToFriend" onClick={() => {
-		const botMessage = "Привет мир от бота - ";
-		const userName = "Иван"; // например, ты хочешь добавить имя пользователя
-
-		const fullMessage = `${botMessage}${userName}`;
-		//@ts-ignore
-		window.Telegram.WebApp.shareMessage(fullMessage);
+		const message = "Я нашел действительно стоящую машину! Вот ссылка на это бомбовое приложение:";
+		const url = `tg://msg_url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(message)}`;
+		window.open(url, "_blank");
 	  }}>
 		<TelegramIcon/>
 		<label>Отправить другу в Telegram</label>
