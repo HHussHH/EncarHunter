@@ -15,9 +15,9 @@ export const CarInfo:FC<ICarInfoProps> = () => {
 	  <p className={"CarInfo__notice"}>Предварительная стоимость под ключ</p>
 	  <h1 className={"CarInfo__price"}>{price.toLocaleString("ru-RU")} ₽</h1>
 	  <button className="CarInfo__shareToFriend" onClick={() => {
-		const message = "Я нашел действительно стоящую машину! Вот ссылка на это бомбовое приложение:";
-		const url = `tg://msg_url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(message)}`;
-		window.open(url, "_blank");
+		const message = "Я нашел действительно стоящую машину! Вот ссылка на это бомбовое объявление!:";
+		const url = window.location.href;
+		window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${url}&text=${message}`)
 	  }}>
 		<TelegramIcon/>
 		<label>Отправить другу в Telegram</label>
