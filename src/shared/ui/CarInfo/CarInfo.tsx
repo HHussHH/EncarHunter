@@ -2,6 +2,7 @@ import "./CarInfo.scss";
 import {FC, ReactNode} from "react";
 import TelegramIcon from "@/shared/assets/DetailsCard/TelegramIcon.svg?react"
 import WhatsAppIcon from "@/shared/assets/DetailsCard/WhatsappIcon.svg?react"
+import {useLocation} from "react-router-dom";
 
 interface ICarInfoProps {
   children?: ReactNode
@@ -9,14 +10,16 @@ interface ICarInfoProps {
 
 export const CarInfo:FC<ICarInfoProps> = () => {
   const price = 3031968
-
+const location = useLocation()
   return (
 	<div className="CarInfo">
 	  <p className={"CarInfo__notice"}>Предварительная стоимость под ключ</p>
 	  <h1 className={"CarInfo__price"}>{price.toLocaleString("ru-RU")} ₽</h1>
 	  <button className="CarInfo__shareToFriend" onClick={() => {
 		const url = window.location.href;
-		window.Telegram.WebApp.openTelegramLink(`https://t.me/share/url?url=${url}&text=Я нашел действительно стоящую машину! Вот ссылка на это бомбовое объявление!`)
+		const text = "Привет! Проверьте это приложение!";
+		const telegramShareLink = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+		window.Telegram.WebApp.openTelegramLink(telegramShareLink)
 	  }}>
 		<TelegramIcon/>
 		<label>Отправить другу в Telegram</label>
