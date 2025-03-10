@@ -17,7 +17,7 @@ export const Button:FC<IButtonProps> = (props) => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-	<button  ref={buttonRef} className={`Button Button__theme-${theme} Button__size-${size}`} {...otherProps}>
+	<button  ref={buttonRef} className={`Button Button__theme-${theme} Button__size-${size} ${cls}`} {...otherProps}>
 	  {icon} <span>{children}</span>
 	</button>
   );

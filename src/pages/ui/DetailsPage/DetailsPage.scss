@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: 100dvh;
+  height: 100vh;
   padding: inherit;
   &__car{
     font-weight: 400;
@@ -58,7 +58,7 @@
   }
   &__body{
     overflow-y: scroll;
-    padding-bottom: inherit;
+    padding-bottom: calc(var(--tg-safe-area-inset-bottom,14px) + 20px + 56px);
   }
 
   &__CarSchema{
@@ -90,7 +90,7 @@
     width: 100%;
     gap:10px;
 
-    button{
+    button,{
       color:#fff;
       font-weight: bold;
       border-radius: 10px;
@@ -108,6 +108,13 @@
         background-color: var(--color-emphasis)
       }
     }
+  }
+  &__back{
+    position: fixed;
+    bottom: calc(var(--tg-safe-area-inset-bottom,14px) - 5px);
+    left: 0;
+    width: 100%;
+    padding-inline: 20px;
   }
 }
 

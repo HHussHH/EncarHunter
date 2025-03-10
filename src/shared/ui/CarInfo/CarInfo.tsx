@@ -9,10 +9,22 @@ interface ICarInfoProps {
 
 export const CarInfo:FC<ICarInfoProps> = () => {
   const price = 3031968
+
   return (
 	<div className="CarInfo">
 	  <p className={"CarInfo__notice"}>Предварительная стоимость под ключ</p>
 	  <h1 className={"CarInfo__price"}>{price.toLocaleString("ru-RU")} ₽</h1>
+	  <button className="CarInfo__shareToFriend" onClick={() => {
+		const botMessage = "Привет мир от бота - ";
+		const userName = "Иван"; // например, ты хочешь добавить имя пользователя
+
+		const fullMessage = `${botMessage}${userName}`;
+		//@ts-ignore
+		window.Telegram.WebApp.shareMessage(fullMessage);
+	  }}>
+		<TelegramIcon/>
+		<label>Отправить другу в Telegram</label>
+	  </button>
 		<ul className={"CarInfo__list"}>
 			<ol className="CarInfo__el">
 			  <label className="CarInfo__title">Марка</label>

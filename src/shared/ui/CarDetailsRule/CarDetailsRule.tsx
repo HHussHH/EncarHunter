@@ -1,5 +1,5 @@
 import "./CarDetailsRule.scss";
-import {FC, ReactNode} from "react";
+import {FC, MutableRefObject, ReactNode} from "react";
 
 interface ICarDetailsRuleProps {
   children?: ReactNode
@@ -28,10 +28,10 @@ export const CarDetailsRule:FC<ICarDetailsRuleProps> = () => {
 		  <ol className="CarDetailsRule__el">8. Услуги брокера в РФ (СБКТС/Склад временного хранения/Экспертиза) 110500 р.
 		  </ol>
 		</ul>
-		<footer className="CarDetailsRule__footer">
+		<div className="CarDetailsRule__footer">
 		  <p className="CarDetailsRule__etc">*конечная стоимость может незначительно отличаться.</p>
 		  <p className="CarDetailsRule__etc">**Расчет обновлен 27.02.2025 по курсу ЦБ РФ RUB/KRW = 16.54, EUR/RUB = 91.18</p>
-		</footer>
+		</div>
 	  </div>
 	</div>
   );
