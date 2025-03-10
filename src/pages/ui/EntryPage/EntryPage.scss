@@ -59,6 +59,10 @@
       margin: 0 auto;
       background: inherit;
       width: 100%;
+      height: inherit;
+    }
+    @media (max-height: 675px) {
+      height: 200px;
     }
 
   }
@@ -76,6 +80,9 @@
     }
     p{
       max-width: 300px;
+    }
+    @media (max-height: 675px) {
+      font-size: 28px;
     }
   }
   &__banner{
