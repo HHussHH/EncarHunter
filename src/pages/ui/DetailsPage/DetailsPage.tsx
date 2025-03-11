@@ -114,8 +114,10 @@ interface IDetailsPageProps{
 			  <span className={'DetailsPage__slider__count'}>{slide + 1} из {sliderArr.length}</span>
 			</div>
  				 <CarInfo/>
+		  <div ref={elementRef}>
 		  <CarDetailsRule/>
-		  <div className='DetailsPage__btns' ref={elementRef}>
+		  </div>
+		  <div className='DetailsPage__btns'>
 			<button>Загрузить историю автомобиля в Корее</button>
 			<button>Проверить это объявление на ENCAR</button>
 		  </div>
