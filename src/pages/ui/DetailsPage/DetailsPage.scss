@@ -29,20 +29,26 @@
       width: 100%;
       height: 100%;
 
-      &-fide{
-        animation: fadeInOut .4s ease;
-      }
+      opacity: 1;
+      animation: fade 0.5s ease-in-out forwards;
     }
     &__count{
       position: absolute;
       bottom: 10px;
       right: 10px;
     }
+    &__placeholder{
+      width: 100%;
+      height: 210px;
+      animation: placeholderIMG 2s ease-in-out infinite;
+    }
     &__arrow{
       &:active{
+        z-index: 111;
         animation: arrowClick 0.5s ease-in-out;
       }
       &-r{
+        z-index: 111;
         position: absolute;
         top:50%;
         right: 10px;
@@ -57,6 +63,7 @@
         align-items: center;
       }
       &-l{
+        z-index: 111;
         position: absolute;
         top:50%;
         left: 10px;
@@ -144,14 +151,24 @@
   }
 }
 
-@keyframes fadeInOut {
-  0% {
+@keyframes fade {
+  from {
     opacity: 0;
   }
-  50% {
+  to {
     opacity: 1;
   }
-  100% {
-    opacity: 0;
+}
+
+@keyframes placeholderIMG{
+  0%{
+    background:#b9b9b9;
+  }
+  50%{
+    background:#fff;
+  }
+  100%{
+    background:#b9b9b9;
   }
 }
+

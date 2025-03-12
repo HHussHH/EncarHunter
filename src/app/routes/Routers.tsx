@@ -47,7 +47,6 @@ export const Routers = () => {
 	  <Route path={ROUTES_PATH.DETAILS_VAC} element={<Container isNav={false}><DetailsPage /></Container>} />
 	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><ForBusinessPage/></Container>} />
 	  <Route path={ROUTES_PATH.ABOUT} element={<Container><ProfilePage/></Container>}/>
-	  <Route path={ROUTES_PATH.NOT_FOUND} element={<Container><h1>404 Not Found</h1></Container>} />
 	</Routes>
   );
 };

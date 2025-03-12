@@ -8,13 +8,17 @@
   flex-direction: column;
   flex:1;
   &__image{
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-
-    img{
       width: 100%;
-    }
+      height: 198px; // Родительская высота
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Подстраивает изображение под контейнер
+        object-position: center -20px; // Смещение изображения вверх
+      }
     &__placeholder{
       animation: placeholderIMG 2s ease-in-out infinite;
       display: block;

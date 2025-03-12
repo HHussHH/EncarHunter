@@ -82,12 +82,8 @@ interface IDetailsPageProps{
 	 }
    }
 
-   const handleImageLoad = (e:any) => {
-	 const img = e.target;
-	 img.classList.remove('DetailsPage__slider__img-fade'); // Убираем анимацию
-	 void img.offsetWidth; // Форсируем перерисовку
-	 img.classList.add('DetailsPage__slider__img-fade'); // Добавляем анимацию
-   };
+   const [loaded,setLoaded] = useState<boolean>(false);
+
    return (
 	   <div className="DetailsPage">
 		<div className="DetailsPage__body">
@@ -103,16 +99,25 @@ interface IDetailsPageProps{
 			  }
 						</ul>}
 		  </div>
-			<div className="DetailsPage__slider">
-				<div onClick={handlePrevSlide} className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-l'}>
-				  <LeftArrow/>
-				</div>
-				<div onClick={handleNextSlide} className={'DetailsPage__slider__arrow DetailsPage__slider__arrow-r' }>
-				  <RightArrow/>
-				</div>
-			  	<img onLoad={handleImageLoad} className={'DetailsPage__slider__img'} src={sliderArr.find(el => el.place === slide)?.img} alt={'slider-img'}/>
-			  <span className={'DetailsPage__slider__count'}>{slide + 1} из {sliderArr.length}</span>
+
+		  <div className="DetailsPage__slider">
+			<div onClick={handlePrevSlide} className="DetailsPage__slider__arrow DetailsPage__slider__arrow-l">
+			  <LeftArrow />
 			</div>
+			<div onClick={handleNextSlide} className="DetailsPage__slider__arrow DetailsPage__slider__arrow-r">
+			  <RightArrow />
+			</div>
+			{!loaded && <div className="DetailsPage__slider__placeholder"  onLoad={() => setLoaded(true)}
+														 style={{ display: loaded ? "block" : "none" }}/>}
+			<img
+			  key={slide} // Обновляет DOM, чтобы анимация перезапускалась
+			  className="DetailsPage__slider__img"
+			  src={sliderArr[slide].img}
+			  alt="slider-img"
+			/>
+			<span className="DetailsPage__slider__count">{slide + 1} из {sliderArr.length}</span>
+		  </div>
+
  				 <CarInfo/>
 		  <div ref={elementRef}>
 		  <CarDetailsRule/>
