@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "@/shared/ui";
-import LogoIcon from "@/shared/assets/others/KoreaFlag.svg?react";
-import LogoTextIcon from "@/shared/assets/EntryPage/EncarHunter.svg?react";
+import Logo from "@/shared/assets/EntryPage/TestLogo.svg?react"
 import carIcon from "@assets/EntryPage/CarIcon.svg";
 import "./EntryPage.scss";
 import PhotoCollage from "@/widgets/ui/PhotoCollage/PhotoCollage";
@@ -39,8 +38,7 @@ export const EntryPage = () => {
     <div className="EntryPage">
       <ProgressBar progress={progress} />
       <div className="EntryPage__logo">
-        <LogoIcon width={80} height={80} />
-        <LogoTextIcon />
+        <Logo />
       </div>
       <PhotoCollage />
       <div className="EntryPage__text">
@@ -65,7 +63,6 @@ export const EntryPage = () => {
           <img src={carIcon} alt="" />
         </div>
       </div>
-      <div className="EntryPage__light" />
     </div>
   );
 };

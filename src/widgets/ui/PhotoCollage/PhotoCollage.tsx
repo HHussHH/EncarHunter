@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import "./PhotoCollage.scss";
-import slide0 from "@assets/EntryPage/car-1.png";
-import slide1 from "@/shared/assets/DetailsCard/slide1.jpg";
-import slide2 from "@/shared/assets/DetailsCard/slide2.jpg";
-import slide3 from "@/shared/assets/DetailsCard/slide3.jpg";
-import slide4 from "@/shared/assets/DetailsCard/slide4.jpg";
+import slide1 from "@/shared/assets/EntryPage/1_compressed.jpeg";
+import slide2 from "@/shared/assets/EntryPage/2_compressed.jpeg";
+import slide3 from "@/shared/assets/EntryPage/3_compressed.jpeg";
+import slide4 from "@/shared/assets/EntryPage/4_compressed.jpeg";
+import slide5 from "@/shared/assets/EntryPage/5_compressed.jpeg";
+import slide6 from "@/shared/assets/EntryPage/6_compressed.jpeg";
+import slide7 from "@/shared/assets/EntryPage/7_compressed.jpeg";
+
+
 
 interface IPhotoCollage {
   src: string;
@@ -14,11 +18,14 @@ interface IPhotoCollage {
 
 const PhotoCollage = () => {
   const photos: IPhotoCollage[] = [
-    { src: slide0, name: "slide0", id: 1 },
-    { src: slide1, name: "slide1", id: 2 },
-    { src: slide2, name: "slide2", id: 3 },
-    { src: slide3, name: "slide3", id: 4 },
-    { src: slide4, name: "slide4", id: 5 },
+    { src: slide1, name: "slide1", id: 1 },
+    { src: slide2, name: "slide2", id: 2 },
+    { src: slide3, name: "slide3", id: 3 },
+    { src: slide4, name: "slide4", id: 4 },
+    { src: slide5, name: "slide5", id: 5 },
+    { src: slide6, name: "slide6", id: 6 },
+    { src: slide7, name: "slide7", id: 7 },
+
   ];
 
   const [pos, setPos] = useState<number | null>(null);
