@@ -5,7 +5,11 @@
   flex-direction: column;
   overflow-y: scroll;
   height: 100vh;
+  padding-inline: 5px;
   z-index: 99;
+  &__info{
+  padding-inline: 5px;
+  }
   &__car{
     font-weight: 400;
     font-size: 20px;

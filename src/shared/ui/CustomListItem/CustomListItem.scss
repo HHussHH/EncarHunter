@@ -38,9 +38,10 @@
   &-active{
     color:var(--second-color-emphasis);
     fill: var(--second-color-emphasis);
+    background-color: #31519d49;
   }
   &-selected{
-    color:var(--second-color-emphasis);
+    color:rgba(49,81,157,0.2);
   }
 }
 
