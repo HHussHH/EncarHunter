@@ -51,21 +51,6 @@
       background: inherit;
     }
   }
-  &__demo{
-    z-index: 1;
-    background: inherit;
-    width: 100%;
-    img{
-      margin: 0 auto;
-      background: inherit;
-      width: 100%;
-      height: inherit;
-    }
-    @media (max-height: 675px) {
-      height: 200px;
-    }
-
-  }
   &__text{
     font-size: 32px;
     color:var(--primary-text-color);

@@ -1,0 +1,22 @@
+    .PhotoCollage{
+        z-index: 1;
+        background: inherit;
+        width: 100%;
+        height: 235px;
+        opacity: 0.5;
+        overflow: hidden;
+        img{
+          margin: 0 auto;
+          background: inherit;
+          width: 100%;
+          height: inherit;
+        }
+        &__placeholder{
+            width: 100%;
+            height: 235px;
+            background:none;
+        }
+        @media (max-height: 675px) {
+          height: 200px;
+        }    
+    }
