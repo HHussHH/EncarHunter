@@ -45,8 +45,8 @@ export const Routers = () => {
 	  <Route path={ROUTES_PATH.HOME} element={<EntryPage  />} />
 	  <Route path={ROUTES_PATH.CARS} element={<Container><CarsPage /></Container>} />
 	  <Route path={ROUTES_PATH.DETAILS_VAC} element={<Container isNav={false}><DetailsPage /></Container>} />
-	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><ForBusinessPage/></Container>} />
-	  <Route path={ROUTES_PATH.ABOUT} element={<Container><ProfilePage/></Container>}/>
+	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><h1 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Подписка</h1></Container>} />
+	  <Route path={ROUTES_PATH.ABOUT} element={<Container><h1 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>О Нас</h1></Container>}/>
 	</Routes>
   );
 };

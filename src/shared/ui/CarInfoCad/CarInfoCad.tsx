@@ -23,6 +23,7 @@ export const CarInfoCad:FC<ICarInfoCadProps> = (props) => {
 			<img
 			  src={carImg}
 			  alt="car"
+			  className={`${loaded && 'CarInfoCad__load'}`}
 			  onLoad={() => setLoaded(true)}
 			  style={{ display: loaded ? "block" : "none" }}
 			/>
