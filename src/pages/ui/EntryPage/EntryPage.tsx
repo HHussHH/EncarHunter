@@ -24,16 +24,16 @@ export const EntryPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  //   useEffect(() => {
-  // 	if(progress >= 100){
-  // 	  const path = localStorage.getItem("initialPath")
-  // 	  if(path === "/" || path === null){
-  // 		navigate(`/cars`)
-  // 	  }else {
-  // 		navigate(`${path}`)
-  // 	  }
-  // 	}
-  //   }, [progress]);
+  useEffect(() => {
+    if (progress >= 100) {
+      const path = localStorage.getItem("initialPath");
+      if (path === "/" || path === null) {
+        navigate(`/cars`);
+      } else {
+        navigate(`${path}`);
+      }
+    }
+  }, [progress]);
 
   return (
     <div className="EntryPage">
