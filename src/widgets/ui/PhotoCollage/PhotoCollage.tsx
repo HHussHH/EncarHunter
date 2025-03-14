@@ -40,13 +40,11 @@ const PhotoCollage = () => {
     <div className="PhotoCollage">
       {pos !== null && (
         <>
-          {isLoad &&  <img
+            <img
             src={photos.find((photo) => photo.id === pos)?.src}
             alt="photo name"
-
-            onLoad={() => setIsLoad(true)}
             className={`PhotoCollage__img ${isLoad ? "PhotoCollage__loaded" : ""}`}
-          />}
+          />
           {!isLoad && <div className="PhotoCollage__placeholder"></div>}
         </>
       )}

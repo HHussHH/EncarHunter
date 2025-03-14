@@ -8,11 +8,10 @@ function App() {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    console.log("пу-пу-пу");
     if(pathname.includes("tgWebAppData")){
-      localStorage.setItem('initialPath',"/");
+      localStorage.setItem('initialPath_encar',"/");
     }else{
-    localStorage.setItem('initialPath',pathname);
+    localStorage.setItem('initialPath_encar',pathname);
     }
 	navigate('/');
     TG_WEB_APP.disableVerticalSwipes();
