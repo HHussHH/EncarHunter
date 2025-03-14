@@ -98,6 +98,7 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
             <RightArrow />
           </div>
           {
+            !loaded &&
             <div
               className="DetailsPage__slider__placeholder"
               style={{ display: !loaded ? "block" : "none" }}></div>
