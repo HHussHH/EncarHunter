@@ -3,13 +3,15 @@ import {FiltersTypes, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
 
  interface IStateInit{
    filters: FiltersTypes[],
-   sortBy: SortByType[]
+   sortBy: SortByType[],
+   carsLoading: boolean,
   cars: any[]
 }
 
 const initialState: IStateInit = {
   filters:['Год выпуска'],
   sortBy:['Сначала новые'],
+  carsLoading: false,
   cars: [
       {
         id:1, coordinates:[59.853040, 30.213963],
@@ -22,7 +24,7 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит"]
+      workType:["Монолит"],
     },
     {
       id:2,
@@ -58,6 +60,9 @@ const CarsSlice = createSlice({
   name:"CarsSlice",
   initialState,
   reducers:{
+    changeLoadStatus: (state, action:PayloadAction<boolean>) => {
+      state.carsLoading = action.payload;
+    },
     changeFilters:(state,action:PayloadAction<{value:FiltersTypes | FiltersTypes[]}>) => {
       const {value} = action.payload;
       if(Array.isArray(value)){
@@ -83,6 +88,6 @@ const CarsSlice = createSlice({
   }
 })
 
-export const {changeFilters,changeSortBy} = CarsSlice.actions;
+export const {changeFilters,changeSortBy,changeLoadStatus} = CarsSlice.actions;
 export default CarsSlice.reducer
 

@@ -13,7 +13,7 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
   const { cars } = useAppSelector(state => state.cars);
   const navigate = useNavigate();
 
-  const handleCarClick = useCallback(
+  const handleClick = useCallback(
 	(id: string) => {
 	  navigate(`${id}`);
 	},
@@ -23,7 +23,7 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
 	return cars.map((item) => (
 		<CarInfoCard
 		  key={item.id}
-		  onClick={() => handleCarClick(item.id)}
+		  onClick={() => handleClick(item.id)}
 		  mileage={"83 961 км"}
 		  price={3031968}
 		  engine_capacity={"2 199 куб. см"}

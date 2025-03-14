@@ -2,6 +2,8 @@ import "./CarInfoCard.scss";
 import { FC, Fragment, HTMLProps, memo, useEffect, useState } from "react";
 import { PositionDetails } from "@/shared/ui";
 import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png";
+import { useAppDispatch, useAppSelector } from "@/shared/api/types/redux.type.ts";
+import { changeLoadStatus } from "@/entities/cars/api/CarsSlice.ts";
 
 interface ICarInfoCardProps extends HTMLProps<HTMLDivElement> {
   price: number;
@@ -13,43 +15,41 @@ interface ICarInfoCardProps extends HTMLProps<HTMLDivElement> {
 
 export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
   const { price, mileage, engine_capacity, drive, production, ...otherProps } = props;
-  const details = [production, mileage, engine_capacity, drive];
-
-  const [loaded, setLoaded] = useState<boolean>(false); // Для отслеживания загрузки изображения
-  const [animationPlayed, setAnimationPlayed] = useState<boolean>(false); // Для отслеживания проигрывания анимации
+  const dispatch = useAppDispatch();
+  const { carsLoading } = useAppSelector((state) => state.cars);
+	const [load, setLoad] = useState<boolean>(false)
 
   useEffect(() => {
-	if (!animationPlayed) {
-	  setAnimationPlayed(true);
+	if(load){
+	  setTimeout(() => {
+		dispatch(changeLoadStatus(true))
+	  },400)
 	}
-  }, [animationPlayed]);
+  }, [load]);
 
   return (
-	<div className={`CarInfoCad ${animationPlayed ? 'CarInfoCad__load' : ''}`} {...otherProps}>
-	  <div className="CarInfoCad__body">
-		<div className="CarInfoCad__image">
-		  {!loaded && <div className="CarInfoCad__image__placeholder" />}
+	<div className={`CarInfoCard`} {...otherProps}>
+	  <div className="CarInfoCard__body">
+		<div className="CarInfoCard__image">
+		  {!load && <div className="CarInfoCard__image__placeholder" />}
 		  <img
 			src={carImg}
 			alt="car"
-			onLoad={() => setLoaded(true)}
-			style={{ display: loaded ? "block" : "none" }}
+			className={`${load && !carsLoading ? "CarInfoCard__load" : ""}`}
+			onLoad={() => setLoad(true)}
+			style={{ display: "block" }}
 		  />
 		</div>
-		<div className="CarInfoCad__content">
-		  <h2 className="CarInfoCad__title">
-			Hyundai Palisade Calligraphy
-		  </h2>
-		  <span className="CarInfoCad__price">{price.toLocaleString("ru-RU")} руб</span>
-		  {details.length > 0 && (
-			<ul className="CarInfoCad__details">
-			  {details.map((opt) => (
-				<Fragment key={opt}>
-				  <PositionDetails>{opt}</PositionDetails>
-				</Fragment>
-			  ))}
-			</ul>
-		  )}
+		<div className="CarInfoCard__content">
+		  <h2 className="CarInfoCard__title">Hyundai Palisade Calligraphy</h2>
+		  <span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} руб</span>
+		  <ul className="CarInfoCard__details">
+			{[production, mileage, engine_capacity, drive].map((opt) => (
+			  <Fragment key={opt}>
+				<PositionDetails>{opt}</PositionDetails>
+			  </Fragment>
+			))}
+		  </ul>
 		</div>
 	  </div>
 	</div>

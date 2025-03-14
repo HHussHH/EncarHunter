@@ -1,4 +1,4 @@
-.CarInfoCad{
+.CarInfoCard{
   width: 100%;
   background-color: #151515;
   border-radius: 10px;
@@ -75,4 +75,12 @@
   100% {
     background-position: 150% 0;
   }
+}
+
+@keyframes fadeIn {
+  from{
+    opacity: 0.1;
+  }to{
+  opacity: 1;
+     }
 }

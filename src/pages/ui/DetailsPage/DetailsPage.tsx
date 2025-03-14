@@ -47,7 +47,6 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
   }, []);
 
   const [slide, setSlide] = useState(0);
-
   const sliderArr = [
     { img: slide1, place: 0 },
     { img: slide2, place: 1 },
@@ -79,7 +78,7 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
             BMW 8-series M850i xDrive Luxury Gran Coupe
           </h1>
           {details.length > 0 && (
-            <ul className="CarInfoCad__details">
+            <ul className="DetailsPage__details">
               {details.map((opt) => (
                 <Fragment key={opt}>
                   <PositionDetails>{opt}</PositionDetails>
@@ -110,7 +109,7 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
           )}
           <img
             key={slide}
-            className="DetailsPage__slider__img"
+            className={`DetailsPage__slider__img DetailsPage__slider__img-${loaded && 'animate'}`}
             src={sliderArr[slide].img}
             onLoad={() => setLoaded(true)}
             alt="slider-img"

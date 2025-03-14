@@ -10,6 +10,9 @@
   &__info{
   padding-inline: 5px;
   }
+  &__details{
+    display: flex;
+  }
   &__car{
     font-weight: 400;
     font-size: 20px;
