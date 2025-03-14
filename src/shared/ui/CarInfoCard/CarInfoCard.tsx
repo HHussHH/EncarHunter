@@ -1,9 +1,9 @@
-import "./CarInfoCad.scss";
+import "./CarInfoCard.scss";
 import { FC, Fragment, HTMLProps, memo, useEffect, useState } from "react";
 import { PositionDetails } from "@/shared/ui";
 import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png";
 
-interface ICarInfoCadProps extends HTMLProps<HTMLDivElement> {
+interface ICarInfoCardProps extends HTMLProps<HTMLDivElement> {
   price: number;
   mileage: string;
   engine_capacity: string;
@@ -11,14 +11,13 @@ interface ICarInfoCadProps extends HTMLProps<HTMLDivElement> {
   production: string;
 }
 
-export const CarInfoCad: FC<ICarInfoCadProps> = memo((props) => {
+export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
   const { price, mileage, engine_capacity, drive, production, ...otherProps } = props;
   const details = [production, mileage, engine_capacity, drive];
 
   const [loaded, setLoaded] = useState<boolean>(false); // Для отслеживания загрузки изображения
   const [animationPlayed, setAnimationPlayed] = useState<boolean>(false); // Для отслеживания проигрывания анимации
 
-  // useEffect, чтобы проигрывать анимацию только при первом рендере
   useEffect(() => {
 	if (!animationPlayed) {
 	  setAnimationPlayed(true);

@@ -8,12 +8,11 @@ import {FiltersTypes, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
 }
 
 const initialState: IStateInit = {
-  filters:['Не выбрано'],
-  sortBy:['Не выбрано'],
+  filters:['Год выпуска'],
+  sortBy:['Сначала новые'],
   cars: [
       {
-        id:1,
-        coordinates:[59.853040, 30.213963],
+        id:1, coordinates:[59.853040, 30.213963],
       selectsOption:[],
       paymentAmount: 3_200,
       paymentType: "за кубометр",
@@ -67,10 +66,10 @@ const CarsSlice = createSlice({
         state.filters = [value];
       }
       if(state.filters.length === 0){
-        state.filters = ['Не выбрано']
+        state.filters = ['Год выпуска']
       }
-      if(state.filters.length > 1 && state.filters.includes('Не выбрано')){
-        state.filters = state.filters.filter((type) => type !== "Не выбрано")
+      if(state.filters.length > 1 && state.filters.includes('Год выпуска')){
+        state.filters = state.filters.filter((type) => type !== "Год выпуска")
       }
     },
     changeSortBy:(state,action:PayloadAction<{value:SortByType |SortByType[] }>) => {

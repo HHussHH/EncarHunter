@@ -2,7 +2,7 @@ import {FC, ReactNode, useEffect, useMemo, useState} from "react";
 import { NavBar } from "@/widgets/ui/NavBar/NavBar.tsx";
 import "./Container.scss";
 import { Button } from "@/shared/ui";
-import { useNavigate } from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 
 interface IContainerProps {
   children: ReactNode;
@@ -27,6 +27,7 @@ export const Container: FC<IContainerProps> = ({ children, isNav = true }) => {
 	>
 	  {children}
 	  {isNav && <NavBar />}
+	  <Outlet />
 	</div>
   );
 };

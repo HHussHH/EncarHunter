@@ -29,11 +29,13 @@
     justify-content: center;
     align-items: center;
     &-active{
+      color:var(--second-color-emphasis);
       background-color:var(--second-color-emphasis);
     }
   }
   &__label{
     font-size: 16px;
+
   }
   &-active{
     color:var(--second-color-emphasis);
@@ -42,6 +44,9 @@
   }
   &-selected{
     color:rgba(49,81,157,0.2);
+    label{
+      color:var(--second-color-emphasis);
+    }
   }
 }
 

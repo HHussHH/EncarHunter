@@ -7,10 +7,8 @@
   display: flex;
   flex-direction: column;
   flex:1;
-  opacity: 0;
-  transition: opacity .5s ease-in-out;
   &__load{
-    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
   }
   &__image{
       width: 100%;
@@ -25,11 +23,15 @@
         object-position: center -20px; // Смещение изображения вверх
       }
     &__placeholder{
-      animation: placeholderIMG 2s ease-in-out infinite;
       display: block;
       width: 100%;
       height: 198px;
-      background-color: #b9b9b9;
+      background: linear-gradient(90deg,
+              rgba(185, 185, 185, 0.3) 0%,
+              rgba(255, 255, 255, 0.7) 50%,
+              rgba(185, 185, 185, 0.3) 100%);
+      background-size: 250% 100%;
+      animation: placeholderShimmer 2.5s infinite linear;
     }
   }
   &__body{
@@ -66,16 +68,11 @@
     margin: 0;
   }
 }
-
-@keyframes placeholderIMG{
-  0%{
-    background:#b9b9b9;
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -150% 0;
   }
-  50%{
-    background:#fff;
-  }
-  100%{
-    background:#b9b9b9;
+  100% {
+    background-position: 150% 0;
   }
 }
-

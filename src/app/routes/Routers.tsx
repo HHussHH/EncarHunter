@@ -37,8 +37,7 @@ export const Routers = () => {
 	}
 
   },[BackButton, navigate, pathname]);
-
-
+  
 
   return (
 	<Routes>

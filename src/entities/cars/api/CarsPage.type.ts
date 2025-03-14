@@ -50,10 +50,10 @@ export const locationTypes = [
 export type locationType = typeof locationTypes[number];
 
 
-export const FilterVariables =  ['Марка', 'Модель', 'Производитель','Год выпуска', 'Спортивная','Не выбрано'] as const
+export const FilterVariables =  ['Марка', 'Модель', 'Производитель','Год выпуска', 'Спортивная'] as const
 export type FiltersTypes = typeof FilterVariables[number];
 
-export const SortBy = ['Сначала новые','Сначала старые','От дорогих к дешевым','От дешевых к дорогим','Не выбрано'] as const;
+export const SortBy = ['Сначала новые','Сначала старые','От дорогих к дешевым','От дешевых к дорогим'] as const;
 export type SortByType = typeof SortBy[number];
 export  interface ICars{
   id:number;
