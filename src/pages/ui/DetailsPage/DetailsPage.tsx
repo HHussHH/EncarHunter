@@ -105,14 +105,14 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
           {!loaded && (
             <div
               className="DetailsPage__slider__placeholder"
-              onLoad={() => setLoaded(true)}
-              style={{ display: loaded ? "block" : "none" }}
+              style={{ display: !loaded ? "block" : "none" }}
             />
           )}
           <img
             key={slide}
             className="DetailsPage__slider__img"
             src={sliderArr[slide].img}
+            onLoad={() => setLoaded(true)}
             alt="slider-img"
           />
           <span className="DetailsPage__slider__count">
