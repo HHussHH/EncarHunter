@@ -1,15 +1,15 @@
 import "./PositionDetails.scss";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 interface IPositionDetailsProps {
   children: string;
 }
 
-export const PositionDetails:FC<IPositionDetailsProps> = ({children}) => {
+export const PositionDetails:FC<IPositionDetailsProps> = memo(({children}) => {
   return (
 	<li className="PositionDetails">
 	  {children}
 	</li>
   );
-};
+});
 

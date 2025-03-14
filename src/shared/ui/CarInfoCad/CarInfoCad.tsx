@@ -1,50 +1,58 @@
 import "./CarInfoCad.scss";
-import {FC, Fragment, HTMLProps, useState} from "react";
-import {PositionDetails} from "@/shared/ui";
-import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png"
-interface ICarInfoCadProps extends HTMLProps<HTMLDivElement>  {
-  price:number;
-  mileage:string;
-  engine_capacity:string;
-  drive:string;
-  production:string;
+import { FC, Fragment, HTMLProps, memo, useEffect, useState } from "react";
+import { PositionDetails } from "@/shared/ui";
+import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png";
+
+interface ICarInfoCadProps extends HTMLProps<HTMLDivElement> {
+  price: number;
+  mileage: string;
+  engine_capacity: string;
+  drive: string;
+  production: string;
 }
 
-export const CarInfoCad:FC<ICarInfoCadProps> = (props) => {
-  const {price,mileage,engine_capacity,drive,production,...otherProps} = props
+export const CarInfoCad: FC<ICarInfoCadProps> = memo((props) => {
+  const { price, mileage, engine_capacity, drive, production, ...otherProps } = props;
+  const details = [production, mileage, engine_capacity, drive];
 
-  const details = [production,mileage,engine_capacity,drive]
-	const [loaded,setLoaded] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(false); // Для отслеживания загрузки изображения
+  const [animationPlayed, setAnimationPlayed] = useState<boolean>(false); // Для отслеживания проигрывания анимации
+
+  // useEffect, чтобы проигрывать анимацию только при первом рендере
+  useEffect(() => {
+	if (!animationPlayed) {
+	  setAnimationPlayed(true);
+	}
+  }, [animationPlayed]);
+
   return (
-	<div className="CarInfoCad" {...otherProps}>
-		<div className="CarInfoCad__body">
-		  <div className="CarInfoCad__image">
-			{!loaded && <div className="CarInfoCad__image__placeholder" />}
-			<img
-			  src={carImg}
-			  alt="car"
-			  className={`${loaded && 'CarInfoCad__load'}`}
-			  onLoad={() => setLoaded(true)}
-			  style={{ display: loaded ? "block" : "none" }}
-			/>
-		  </div>
+	<div className={`CarInfoCad ${animationPlayed ? 'CarInfoCad__load' : ''}`} {...otherProps}>
+	  <div className="CarInfoCad__body">
+		<div className="CarInfoCad__image">
+		  {!loaded && <div className="CarInfoCad__image__placeholder" />}
+		  <img
+			src={carImg}
+			alt="car"
+			onLoad={() => setLoaded(true)}
+			style={{ display: loaded ? "block" : "none" }}
+		  />
+		</div>
 		<div className="CarInfoCad__content">
 		  <h2 className="CarInfoCad__title">
 			Hyundai Palisade Calligraphy
 		  </h2>
 		  <span className="CarInfoCad__price">{price.toLocaleString("ru-RU")} руб</span>
-		  {details.length > 0 && <ul className="CarInfoCad__details">
-			{
-			  details.map((opt) => (
+		  {details.length > 0 && (
+			<ul className="CarInfoCad__details">
+			  {details.map((opt) => (
 				<Fragment key={opt}>
 				  <PositionDetails>{opt}</PositionDetails>
 				</Fragment>
-			  ))
-			}
-					</ul>}
+			  ))}
+			</ul>
+		  )}
 		</div>
-		</div>
+	  </div>
 	</div>
   );
-};
-
+});

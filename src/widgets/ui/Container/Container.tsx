@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react";
+import {FC, ReactNode, useEffect, useMemo, useState} from "react";
 import { NavBar } from "@/widgets/ui/NavBar/NavBar.tsx";
 import "./Container.scss";
 import { Button } from "@/shared/ui";
@@ -14,8 +14,8 @@ interface IContainerProps {
 export const Container: FC<IContainerProps> = ({ children, isNav = true }) => {
   //@ts-ignore
   const padBottom = window.Telegram.WebApp.safeAreaInset.bottom;
-  const navigate = useNavigate();
 
+  const memoChild = useMemo(()=>children,[children])
   return (
 	<div
 	  className="Container"

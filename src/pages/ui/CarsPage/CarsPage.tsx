@@ -8,6 +8,7 @@ import {useAppDispatch, useAppSelector} from "@/shared/api/types/redux.type.ts";
 import {CustomSelector} from "@/widgets/ui";
 import {CarList} from "@/features/ui";
 import {changeFilters, changeSortBy} from "@/entities/cars/api/CarsSlice.ts";
+import {ReactNode, useMemo, useRef} from "react";
 
 export const CarsPage = () => {
 const state = useAppSelector((state) => state.cars)
@@ -21,29 +22,34 @@ const state = useAppSelector((state) => state.cars)
 	dispatch(changeSortBy({ value: data }));
   };
 
+const memoFilters = useMemo(() => <CustomSelector
+  selected={true}
+  icon={<LocationMap width={12} height={12}/>}
+  type="Фильтры"
+  title={"Фильтры"}
+  changeHandler={changeFilter}
+  value={state.filters}
+  isMulti={true}
+  options={[...FilterVariables]}
+/>,[])
+
+  const memoSorts = useMemo(()=>	<CustomSelector
+	options={[...SortBy]}
+	value={state.sortBy}
+	changeHandler={changeSort}
+	title={"Сортировка"}
+	icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>,[])
 
 return (
 	<div className="CarsPage">
 	  <div className="CarsPage__header">
-		<CustomSelector
-		  selected={true}
-		  icon={<LocationMap width={12} height={12}/>}
-		  type="Фильтры"
-		  title={"Фильтры"}
-		  changeHandler={changeFilter}
-		  value={state.filters}
-		  isMulti={true}
-		  options={[...FilterVariables]}
-		/>
-		<CustomSelector
-		  options={[...SortBy]}
-		  value={state.sortBy}
-		  changeHandler={changeSort}
-		  title={"Сортировка"}
-		  icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>
+		{memoFilters}
+		{memoSorts}
 	  </div>
 	  <div className="CarsPage__body">
-		<CarList title="Последние объявления"/>
+		<div className="CarsPage__body">
+		  <CarList title="Последние объявления" />
+		</div>
 	  </div>
 	</div>
   );
