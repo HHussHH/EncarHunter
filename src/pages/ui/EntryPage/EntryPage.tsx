@@ -23,16 +23,16 @@ export const EntryPage = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // useEffect(() => {
-  //   if (progress >= 100) {
-  //     const path = localStorage.getItem("initialPath");
-  //     if (path === "/" || path === null) {
-  //       navigate(`/cars`);
-  //     } else {
-  //       navigate(`${path}`);
-  //     }
-  //   }
-  // }, [progress]);
+  useEffect(() => {
+    if (progress >= 100) {
+      const path = localStorage.getItem("initialPath");
+      if (path === "/" || path === null) {
+        navigate(`/cars`);
+      } else {
+        navigate(`${path}`);
+      }
+    }
+  }, [progress]);
 
   return (
     <div className="EntryPage">
@@ -41,15 +41,6 @@ export const EntryPage = () => {
         <Logo />
       </div>
       <PhotoCollage />
-      <div className="EntryPage__text">
-        <p>
-          Более 30 000 авто
-          <br/>
-          <strong> из Южной Кореи </strong>
-          <br/>
-          доступны к заказу
-        </p>
-      </div>
       <div className="EntryPage__wrapper">
         <div className="EntryPage__banner">
           <div className="EntryPage__banner__body">
@@ -65,6 +56,7 @@ export const EntryPage = () => {
           <img src={carIcon} alt="" />
         </div>
       </div>
+
     </div>
   );
 };

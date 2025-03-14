@@ -49,6 +49,15 @@ const PhotoCollage = () => {
           {!isLoad && <div className="PhotoCollage__placeholder"></div>}
         </>
       )}
+      <div className="PhotoCollage__text">
+        <p>
+          Более 30 000 авто
+          <br/>
+          <strong> из Южной Кореи </strong>
+          <br/>
+          доступны к заказу
+        </p>
+      </div>
     </div>
   );
 };
