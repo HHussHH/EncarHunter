@@ -22,30 +22,26 @@ const state = useAppSelector((state) => state.cars)
 	dispatch(changeSortBy({ value: data }));
   };
 
-const memoFilters = useMemo(() => <CustomSelector
-  selected={true}
-  icon={<LocationMap width={12} height={12}/>}
-  type="Фильтры"
-  title={"Фильтры"}
-  changeHandler={changeFilter}
-  value={state.filters}
-  isMulti={true}
-  options={[...FilterVariables]}
-/>,[])
 
-  const memoSorts = useMemo(()=>	<CustomSelector
-	options={[...SortBy]}
-	value={state.sortBy}
-	changeHandler={changeSort}
-	title={"Сортировка"}
-	icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>,[])
 
 return (
 	<div className="CarsPage">
 	  <div className="CarsPage__header">
-		{memoFilters}
-		{memoSorts}
-	  </div>
+		<CustomSelector
+		  selected={true}
+		  icon={<LocationMap width={12} height={12}/>}
+		  type="Фильтры"
+		  title={"Фильтры"}
+		  changeHandler={changeFilter}
+		  value={state.filters}
+		  isMulti={true}
+		  options={[...FilterVariables]}
+		/>		<CustomSelector
+		  options={[...SortBy]}
+		  value={state.sortBy}
+		  changeHandler={changeSort}
+		  title={"Сортировка"}
+		  icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>	  </div>
 	  <div className="CarsPage__body">
 		<div className="CarsPage__body">
 		  <CarList title="Последние объявления" />

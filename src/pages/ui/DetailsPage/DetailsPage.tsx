@@ -16,10 +16,6 @@ interface IDetailsPageProps {
 }
 
 const DetailsPage: FC<IDetailsPageProps> = () => {
-  const { id } = useParams();
-  const currentCarInfo = useAppSelector((state) =>
-    state.cars.cars.find((item) => item.id === Number(id))
-  );
   const details = ["2020.12", "83 961 км", "2 199 куб. см", "2WD"];
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
@@ -101,12 +97,11 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
           >
             <RightArrow />
           </div>
-          {!loaded && (
+          {
             <div
               className="DetailsPage__slider__placeholder"
-              style={{ display: !loaded ? "block" : "none" }}
-            />
-          )}
+              style={{ display: !loaded ? "block" : "none" }}></div>
+          }
           <img
             key={slide}
             className={`DetailsPage__slider__img DetailsPage__slider__img-${loaded && 'animate'}`}

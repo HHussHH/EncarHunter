@@ -17,26 +17,30 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
   const { price, mileage, engine_capacity, drive, production, ...otherProps } = props;
   const dispatch = useAppDispatch();
   const { carsLoading } = useAppSelector((state) => state.cars);
-	const [load, setLoad] = useState<boolean>(false)
+  const [load, setLoad] = useState<boolean>(false)
 
   useEffect(() => {
 	if(load){
 	  setTimeout(() => {
 		dispatch(changeLoadStatus(true))
-	  },400)
+	  },600)
 	}
   }, [load]);
 
   return (
-	<div className={`CarInfoCard`} {...otherProps}>
+	<div className={`CarInfoCard`}
+		 {...otherProps}>
 	  <div className="CarInfoCard__body">
 		<div className="CarInfoCard__image">
-		  {!load && <div className="CarInfoCard__image__placeholder" />}
+		  {!load &&  <div className="CarInfoCard__image__placeholder" />}
 		  <img
 			src={carImg}
 			alt="car"
 			className={`${load && !carsLoading ? "CarInfoCard__load" : ""}`}
-			onLoad={() => setLoad(true)}
+			onLoad={() => {
+			  console.log('work load')
+			  setLoad(true)
+			}}
 			style={{ display: "block" }}
 		  />
 		</div>
