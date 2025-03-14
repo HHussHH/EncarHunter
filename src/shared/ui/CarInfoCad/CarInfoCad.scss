@@ -8,7 +8,7 @@
   flex-direction: column;
   flex:1;
   &__load{
-    animation: fadeIn 1s;
+    animation: fadeIn 0.5s ease-in-out forwards;
   }
   &__image{
       width: 100%;
