@@ -17,8 +17,9 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
 	(id: string) => {
 	  navigate(`${id}`);
 	},
-	[navigate] // зависимость от navigate
+	[navigate]
   );
+
   const carsList = useMemo(() => {
 	return cars.map((item) => (
 		<CarInfoCard
@@ -31,7 +32,7 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
 		  production={"2020.12"}
 		/>
 	));
-  }, [cars]); // Добавил зависимость от cars
+  }, [cars]);
 
   return (
 	<div className="CarList">

@@ -5,10 +5,10 @@ import { Button, CarInfo, PositionDetails } from "@/shared/ui";
 import { useNavigate, useParams } from "react-router-dom";
 import { CarDetailsRule } from "@/shared/ui/CarDetailsRule/CarDetailsRule.tsx";
 import CarSchema from "@/shared/assets/DetailsCard/CarShema.png";
-import slide1 from "@/shared/assets/DetailsCard/slide1.jpg";
-import slide2 from "@/shared/assets/DetailsCard/slide2.jpg";
-import slide3 from "@/shared/assets/DetailsCard/slide3.jpg";
-import slide4 from "@/shared/assets/DetailsCard/slide4.jpg";
+import slide1 from "@/shared/assets/DetailsCard/slide1_compressed.jpeg";
+import slide2 from "@/shared/assets/DetailsCard/slide2_compressed.jpeg";
+import slide3 from "@/shared/assets/DetailsCard/slide3_compressed.jpeg";
+import slide4 from "@/shared/assets/DetailsCard/slide4_compressed.jpeg";
 import LeftArrow from "@/shared/assets/DetailsCard/LeftArrow.svg?react";
 import RightArrow from "@/shared/assets/DetailsCard/RightArrow.svg?react";
 interface IDetailsPageProps {
