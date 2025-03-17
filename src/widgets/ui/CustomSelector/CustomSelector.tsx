@@ -27,14 +27,26 @@ export const CustomSelector:FC<ICustomSelectorProps> = ({changeHandler,selected 
   return (
 	<>
 	  <div className={`CustomSelector ${selected ?  "CustomSelector-selected" : ""}`} onClick={toggleIsOpen}>
+		{window.innerWidth > 450 && icon}
+		{
+		  window.innerWidth > 450 ? <div className='CustomSelector__desktop'>
+			<div className="CustomSelector__header">
+			  <div className="CustomSelector__type">{type}</div>
+			</div>
+			<h1 className={`CustomSelector__title ${Array.isArray(title) ? 'CustomSelector-mini' : ''}`}>
+			  {!Array.isArray(value) ? value : value.length > 2 ? `${value[0]}, ${value[1]} (${value.length - 2})` : value.join(", ")}
+			</h1>
+		  </div> : <>
+			<div className="CustomSelector__header">
+			  {icon}
+			  <div className="CustomSelector__type">{type}</div>
+			</div>
+			<h1 className={`CustomSelector__title ${Array.isArray(title) ? 'CustomSelector-mini' : ''}`}>
+			  {!Array.isArray(value) ? value : value.length > 2 ? `${value[0]}, ${value[1]} (${value.length - 2})` : value.join(", ")}
+			</h1>
+		  </>
+		}
 
-		<div className="CustomSelector__header">
-		  {icon}
-		  <div className="CustomSelector__type">{type}</div>
-		</div>
-		<h1 className={`CustomSelector__title ${Array.isArray(title) ? 'CustomSelector-mini' : ''}`}>
-		  {!Array.isArray(value) ? value : value.length > 2 ? `${value[0]}, ${value[1]} (${value.length - 2})` : value.join(", ")}
-		</h1>
 	  </div>
 	  {isOpen && <CustomSelectorList
 				value={value}

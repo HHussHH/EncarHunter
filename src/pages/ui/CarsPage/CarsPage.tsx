@@ -8,7 +8,6 @@ import {useAppDispatch, useAppSelector} from "@/shared/api/types/redux.type.ts";
 import {CustomSelector} from "@/widgets/ui";
 import {CarList} from "@/features/ui";
 import {changeFilters, changeSortBy} from "@/entities/cars/api/CarsSlice.ts";
-import {ReactNode, useMemo, useRef} from "react";
 import {Header} from "@/widgets/ui/Header/Header.tsx";
 
 export const CarsPage = () => {
@@ -31,7 +30,7 @@ return (
 	  <div className="CarsPage__header">
 		<CustomSelector
 		  selected={true}
-		  icon={<LocationMap width={12} height={12}/>}
+		  icon={<LocationMap width={window.innerWidth >= 450 ? 24 : 12} height={window.innerWidth >= 450 ? 24 : 12}/>}
 		  type="Фильтры"
 		  title={"Фильтры"}
 		  changeHandler={changeFilter}
@@ -43,7 +42,7 @@ return (
 		  value={state.sortBy}
 		  changeHandler={changeSort}
 		  title={"Сортировка"}
-		  icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>	  </div>
+		  icon={<CarIcon width={window.innerWidth >= 450 ? 24 : 12} height={window.innerWidth >= 450 ? 24 : 12}/>} type="Сортировка"/>	  </div>
 	  <div className="CarsPage__body">
 		  <CarList title="Последние объявления" />
 	  </div>

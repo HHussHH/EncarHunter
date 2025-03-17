@@ -17,6 +17,12 @@
     gap:15px;
     flex-direction: column;
     @media (min-width: 450px) {
+      gap:5px;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    @media (min-width: 710px) {
+      gap:15px;
       flex-wrap: wrap;
       flex-direction: row;
     }
