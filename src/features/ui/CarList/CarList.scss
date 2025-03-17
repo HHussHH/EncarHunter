@@ -8,5 +8,21 @@
     font-size: 24px;
     color:#fff;
     padding-left: 12px;
+
+  }
+  &__list{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap:15px;
+    flex-direction: column;
+    @media (min-width: 450px) {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+    @media (min-width: 1440px) {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
   }
 }

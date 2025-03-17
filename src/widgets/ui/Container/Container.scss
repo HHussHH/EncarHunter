@@ -1,6 +1,15 @@
 .Container {
   height: 100dvh;
   padding: 5px 5px 0;
+  @media (min-width: 451px) {
+    padding: 5px 20px 20px;
+  }
+  @media (min-width: 1390px) {
+    padding: 5px 65px 20px;
+  }
+  @media (min-width: 1440px) {
+    padding: 5px 65px 20px;
+  }
   &__btn{
     z-index: 999;
     position: fixed;
@@ -10,6 +19,7 @@
     left: 0;
     bottom: 10px;
   }
+
 }
 
 

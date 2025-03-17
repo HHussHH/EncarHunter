@@ -37,7 +37,9 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
   return (
 	<div className="CarList">
 	  <h1 className="CarList__title">{title}</h1>
+	  <div className="CarList__list">
 	  {carsList}
+	  </div>
 	</div>
   );
 });

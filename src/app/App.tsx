@@ -13,10 +13,16 @@ function App() {
     }else{
     localStorage.setItem('initialPath_encar',pathname);
     }
+    if(window.innerWidth <= 450){
 	navigate('/');
+    }
+    if(localStorage.getItem('initialPath_encar') === "/"){
+      navigate('/cars');
+    }
     TG_WEB_APP.disableVerticalSwipes();
     TG_WEB_APP.expand();
   }, []);
+
   if (TG_WEB_APP) {
     if (TG_WEB_APP.isExpanded) {
       TG_WEB_APP.expand();

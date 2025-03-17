@@ -9,6 +9,7 @@ import {CustomSelector} from "@/widgets/ui";
 import {CarList} from "@/features/ui";
 import {changeFilters, changeSortBy} from "@/entities/cars/api/CarsSlice.ts";
 import {ReactNode, useMemo, useRef} from "react";
+import {Header} from "@/widgets/ui/Header/Header.tsx";
 
 export const CarsPage = () => {
 const state = useAppSelector((state) => state.cars)
@@ -26,6 +27,7 @@ const state = useAppSelector((state) => state.cars)
 
 return (
 	<div className="CarsPage">
+	  { window.innerWidth > 450 && <Header />}
 	  <div className="CarsPage__header">
 		<CustomSelector
 		  selected={true}
@@ -43,9 +45,7 @@ return (
 		  title={"Сортировка"}
 		  icon={<CarIcon width={12} height={12}/>} type="Сортировка"/>	  </div>
 	  <div className="CarsPage__body">
-		<div className="CarsPage__body">
 		  <CarList title="Последние объявления" />
-		</div>
 	  </div>
 	</div>
   );
