@@ -1,8 +1,7 @@
 import "./DetailsPage.scss";
 import { FC, Fragment, ReactNode, useEffect, useRef, useState } from "react";
-import { useAppSelector } from "@/shared/api/types/redux.type.ts";
 import { Button, CarInfo, PositionDetails } from "@/shared/ui";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CarDetailsRule } from "@/shared/ui/CarDetailsRule/CarDetailsRule.tsx";
 import CarSchema from "@/shared/assets/DetailsCard/CarShema.png";
 import slide1 from "@/shared/assets/DetailsCard/slide1_compressed.jpeg";
