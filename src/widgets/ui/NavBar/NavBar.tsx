@@ -22,7 +22,12 @@ export const NavBar:FC<INavBarProps> = () => {
   });
 
   const handleClick = (key: keyof typeof isPlaying) => {
-	setIsPlaying((prev) => ({ ...prev, [key]: true }));
+	setIsPlaying({
+	  car: false,
+	  bell: false,
+	  house: false,
+	  [key]: true,
+	});
   };
 
   useEffect(() => {
