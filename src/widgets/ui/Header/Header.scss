@@ -43,19 +43,21 @@
     border-radius: 50px;
     padding: 5px 10px;
     cursor: pointer;
-    border:none;
     text-transform: capitalize;
     font-size: 14px;
-
+    background: none;
+    color:#fff;
+    border: 1px solid #00ff00;
+    background: var(--card-bg);
     @media (max-width: 540px) {
       height: 34px;
     }
     &-telegram{
-      background: #29A9EB;
+      border: 1px solid #29A9EB;
       color:#fff;
     }
     &-car{
-      background: #E71818;
+      border: 1px solid #E71818;
       color: #fff;
     }
   }

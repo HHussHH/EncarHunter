@@ -1,5 +1,5 @@
 import "./Header.scss";
-import {FC, ReactNode} from "react";
+import {FC, ReactNode, useEffect} from "react";
 import Logo from "@/shared/assets/EntryPage/TestLogo.svg"
 
 interface IHeaderProps {

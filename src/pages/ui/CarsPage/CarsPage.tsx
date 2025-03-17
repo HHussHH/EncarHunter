@@ -9,6 +9,7 @@ import {CustomSelector} from "@/widgets/ui";
 import {CarList} from "@/features/ui";
 import {changeFilters, changeSortBy} from "@/entities/cars/api/CarsSlice.ts";
 import {Header} from "@/widgets/ui/Header/Header.tsx";
+import {useEffect, useState} from "react";
 
 export const CarsPage = () => {
 const state = useAppSelector((state) => state.cars)
@@ -21,16 +22,23 @@ const state = useAppSelector((state) => state.cars)
 	const data: SortByType = value as SortByType; // Просто строка
 	dispatch(changeSortBy({ value: data }));
   };
+  const [isWide, setIsWide] = useState(window.innerWidth > 450);
 
+  useEffect(() => {
+	const handleResize = () => setIsWide(window.innerWidth > 450);
+
+	window.addEventListener("resize", handleResize);
+	return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
 
 return (
 	<div className="CarsPage">
-	  { window.innerWidth > 450 && <Header />}
+	  { isWide && <Header />}
 	  <div className="CarsPage__header">
 		<CustomSelector
 		  selected={true}
-		  icon={<LocationMap width={window.innerWidth >= 450 ? 24 : 12} height={window.innerWidth >= 450 ? 24 : 12}/>}
+		  icon={<LocationMap width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>}
 		  type="Фильтры"
 		  title={"Фильтры"}
 		  changeHandler={changeFilter}
