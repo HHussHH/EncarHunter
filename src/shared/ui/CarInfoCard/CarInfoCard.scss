@@ -33,6 +33,7 @@
         object-position: center 0; // Смещение изображения вверх
       }
     &__placeholder{
+      aspect-ratio: 16 / 9; /* Или другая пропорция, соответствующая изображениям */
       display: block;
       width: 100%;
       height: auto;
