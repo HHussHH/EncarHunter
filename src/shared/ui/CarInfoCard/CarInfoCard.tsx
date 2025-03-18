@@ -32,17 +32,17 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 		 {...otherProps}>
 	  <div className="CarInfoCard__body">
 		<div className="CarInfoCard__image">
-		  {!load &&  <div className="CarInfoCard__image__placeholder" />}
-		  <img
-			src={carImg}
-			alt="car"
-			className={`${load && !carsLoading ? "CarInfoCard__load" : ""}`}
-			onLoad={() => {
-			  console.log('work load')
-			  setLoad(true)
-			}}
-			style={{ display: "block" }}
-		  />
+		   <div className="CarInfoCard__image__placeholder" >
+			 <img
+			   src={carImg}
+			   alt="car"
+			   className={`${load && !carsLoading ? "CarInfoCard__load" : ""}`}
+			   onLoad={() => {
+				 setLoad(true)
+			   }}
+			   style={{ display: "block" }}
+			 />
+		   </div>
 		</div>
 		<div className="CarInfoCard__content">
 		  <h2 className="CarInfoCard__title">Hyundai Palisade Calligraphy</h2>
