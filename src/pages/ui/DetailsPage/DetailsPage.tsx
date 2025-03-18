@@ -50,17 +50,18 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
   ];
 
   const handleNextSlide = () => {
-    if (slide === sliderArr.length - 1) setSlide(0);
+    if(slide < 300)
+      setSlide((prev) => prev + 100);
     else {
-      setSlide((prev) => prev + 1);
+      setSlide(0);
     }
   };
 
   const handlePrevSlide = () => {
-    if (slide === 0) setSlide(sliderArr.length - 1);
-    else {
-      setSlide((prev) => prev - 1);
-    }
+      if(slide === 0){
+        setSlide(400);
+      }
+      setSlide((prev) => prev - 100);
   };
 
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -97,20 +98,28 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
             <RightArrow />
           </div>
           {
-            !loaded &&
             <div
-              className="DetailsPage__slider__placeholder"
-              style={{ display: !loaded ? "block" : "none" }}></div>
+              className="DetailsPage__slider__placeholder">
+              <div style={{transform: `translateX(-${slide}%)`}} className={`DetailsPage__slider__imgs`}>
+                {
+                  sliderArr.map(slide =>  <img
+                    key={slide.place}
+                    className={`DetailsPage__slider__img `}
+                    src={slide.img}
+                    onLoad={() => {
+                      setLoaded(true)
+                    }}
+                    style={{
+                      display: loaded ? "block":"none",
+                    }}
+                    alt="slider-img"
+                  />)
+                }
+              </div>
+            </div>
           }
-          <img
-            key={slide}
-            className={`DetailsPage__slider__img DetailsPage__slider__img-${loaded && 'animate'}`}
-            src={sliderArr[slide].img}
-            onLoad={() => setLoaded(true)}
-            alt="slider-img"
-          />
           <span className="DetailsPage__slider__count">
-            {slide + 1} из {sliderArr.length}
+            {(slide / 100) + 1} из {sliderArr.length}
           </span>
         </div>
 
