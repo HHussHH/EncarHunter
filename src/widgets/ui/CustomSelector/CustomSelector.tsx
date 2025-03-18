@@ -1,5 +1,5 @@
 import "./CustomSelector.scss";
-import {FC, ReactNode, useState} from "react";
+import {FC, ReactNode, useEffect, useState} from "react";
 import {CustomSelectorList} from "@/features/ui";
 import {Button} from "@/shared/ui";
 
@@ -23,13 +23,20 @@ export const CustomSelector:FC<ICustomSelectorProps> = ({changeHandler,selected 
   const toggleIsOpen = () =>{
 	setIsOpen(prev => !prev)
   }
+  const [isWide, setIsWide] = useState(window.innerWidth > 450);
 
+  useEffect(() => {
+	const handleResize = () => setIsWide(window.innerWidth > 450);
+
+	window.addEventListener("resize", handleResize);
+	return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
 	<>
 	  <div className={`CustomSelector ${selected ?  "CustomSelector-selected" : ""}`} onClick={toggleIsOpen}>
-		{window.innerWidth > 450 && icon}
+		{isWide && icon}
 		{
-		  window.innerWidth > 450 ? <div className='CustomSelector__desktop'>
+		  isWide ? <div className='CustomSelector__desktop'>
 			<div className="CustomSelector__header">
 			  <div className="CustomSelector__type">{type}</div>
 			</div>

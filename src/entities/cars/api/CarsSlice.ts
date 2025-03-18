@@ -165,9 +165,6 @@ const CarsSlice = createSlice({
       if(state.filters.length === 0){
         state.filters = ['Год выпуска']
       }
-      if(state.filters.length > 1 && state.filters.includes('Год выпуска')){
-        state.filters = state.filters.filter((type) => type !== "Год выпуска")
-      }
     },
     changeSortBy:(state,action:PayloadAction<{value:SortByType |SortByType[] }>) => {
       const {value} = action.payload;
