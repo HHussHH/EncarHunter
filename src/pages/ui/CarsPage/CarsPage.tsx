@@ -50,7 +50,7 @@ return (
 		  value={state.sortBy}
 		  changeHandler={changeSort}
 		  title={"Сортировка"}
-		  icon={<CarIcon width={window.innerWidth >= 450 ? 24 : 12} height={window.innerWidth >= 450 ? 24 : 12}/>} type="Сортировка"/>	  </div>
+		  icon={<CarIcon  width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>} type="Сортировка"/>	  </div>
 	  <div className="CarsPage__body">
 		  <CarList title="Последние объявления" />
 	  </div>

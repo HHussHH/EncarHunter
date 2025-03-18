@@ -58,6 +58,9 @@
     flex-wrap: wrap;
     padding: 10px 15px 15px 15px;
     gap:5px;
+    @media (max-width: 340px) {
+      padding: 10px 7px 15px 7px;
+    }
     @media screen and (min-width: 451px) and (max-width: 660px){
       padding: 10px 5px 10px 5px;
     }
