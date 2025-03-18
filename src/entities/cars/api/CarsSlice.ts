@@ -25,6 +25,7 @@ const initialState: IStateInit = {
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
       workType:["Монолит"],
+        isViewDetails: false,
     },
     {
       id:2,
@@ -38,7 +39,9 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
+
     },
     {
       id:3,
@@ -52,7 +55,8 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
     },
     {
       id:4, coordinates:[59.853040, 30.213963],
@@ -66,6 +70,7 @@ const initialState: IStateInit = {
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
       workType:["Монолит"],
+      isViewDetails: false,
     },
     {
       id:5,
@@ -79,7 +84,8 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
     },
     {
       id:6,
@@ -93,7 +99,8 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
     },
     {
       id:7, coordinates:[59.853040, 30.213963],
@@ -107,6 +114,7 @@ const initialState: IStateInit = {
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
       workType:["Монолит"],
+      isViewDetails: false,
     },
     {
       id:8,
@@ -120,7 +128,8 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
     },
     {
       id:9,
@@ -134,7 +143,8 @@ const initialState: IStateInit = {
       paidPeriod:"за кубометр",
       title:"Монолит, кирпичная кладка, отделка",
       createdAt:"21.12.2024, 16:00",
-      workType:["Монолит", "Кирпичная кладка","Отделка"]
+      workType:["Монолит", "Кирпичная кладка","Отделка"],
+      isViewDetails: false,
     }
   ]
 }
@@ -167,9 +177,12 @@ const CarsSlice = createSlice({
         state.sortBy = [value];
       }
     },
+    changeViewDetails: (state,action:PayloadAction<{id:number}>) => {
+      state.cars.filter((car) => car.id === action.payload.id)[0].isViewDetails = true
+    }
   }
 })
 
-export const {changeFilters,changeSortBy,changeLoadStatus} = CarsSlice.actions;
+export const {changeFilters,changeSortBy,changeViewDetails,changeLoadStatus} = CarsSlice.actions;
 export default CarsSlice.reducer
 

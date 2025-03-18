@@ -31,7 +31,7 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 	<section className={`CarInfoCard`}
 		 {...otherProps}>
 	  <div className="CarInfoCard__body">
-		<div className="CarInfoCard__image">
+		<header className="CarInfoCard__image">
 		   <div className="CarInfoCard__image__placeholder" >
 			 <img
 			   src={carImg}
@@ -43,8 +43,8 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 			   style={{ display: "block" }}
 			 />
 		   </div>
-		</div>
-		<div className="CarInfoCard__content">
+		</header>
+		<footer className="CarInfoCard__content">
 		  <h2 className="CarInfoCard__title">Hyundai Palisade Calligraphy</h2>
 		  <span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} руб</span>
 		  <ul className="CarInfoCard__details">
@@ -54,7 +54,7 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 			  </Fragment>
 			))}
 		  </ul>
-		</div>
+		</footer>
 	  </div>
 	</section>
   );

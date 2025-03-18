@@ -41,26 +41,26 @@ export const NavBar:FC<INavBarProps> = () => {
 	<nav className="NavBar" style={{bottom: padBottom && padBottom > 0 ? padBottom - 10 : '24px'}}>
 		<ul className="NavBar__body">
 		  <NavElem path={"cars"} label={"Авто в наличие"} onClick={() => handleClick("car")}>
-			<div className={"NavBar__el"} >
+			<li className={"NavBar__el"} >
 			  {
 				!isPlaying.car ? <img alt={'icon'} src={CarIconStatic}/>  : <img alt={'icon'} src={CarIcon}/>
 			  }
-			</div>
+			</li>
 		  </NavElem>
 		  <NavElem path={"subscribe"} label={"Подписка"} onClick={() => handleClick("bell")}>
-			  <div className={"NavBar__el"} >
+			  <li className={"NavBar__el"} >
 				{
 				  !isPlaying.bell ? <img alt={'icon'} src={BellIconStatic}/>  : <img alt={'icon'} src={BellIcon}/>
 				}
-			  </div>
+			  </li>
 
 		  </NavElem>
 		  <NavElem path={"AboutUs"} label={"О Нас"} onClick={() => handleClick("house")}>
-			<div className={"NavBar__el"} >
+			<li className={"NavBar__el"} >
 			  {
 				!isPlaying.house ? <img alt={'icon'} src={HouseIconStatic}/>  : <img alt={'icon'} src={HouseIcon}/>
 			  }
-			</div>
+			</li>
 		  </NavElem>
 		</ul>
 	</nav>

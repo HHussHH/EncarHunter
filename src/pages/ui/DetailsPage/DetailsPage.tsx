@@ -1,7 +1,7 @@
 import "./DetailsPage.scss";
 import { FC, Fragment, ReactNode, useEffect, useRef, useState } from "react";
 import { Button, CarInfo, PositionDetails } from "@/shared/ui";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { CarDetailsRule } from "@/shared/ui/CarDetailsRule/CarDetailsRule.tsx";
 import CarSchema from "@/shared/assets/DetailsCard/CarShema.png";
 import slide1 from "@/shared/assets/DetailsCard/slide1_compressed.jpeg";
@@ -10,6 +10,8 @@ import slide3 from "@/shared/assets/DetailsCard/slide3_compressed.jpeg";
 import slide4 from "@/shared/assets/DetailsCard/slide4_compressed.jpeg";
 import LeftArrow from "@/shared/assets/DetailsCard/LeftArrow.svg?react";
 import RightArrow from "@/shared/assets/DetailsCard/RightArrow.svg?react";
+import {changeViewDetails} from "@/entities/cars/api/CarsSlice.ts";
+import {useAppDispatch, useAppSelector} from "@/shared/api/types/redux.type.ts";
 interface IDetailsPageProps {
   children?: ReactNode;
 }
@@ -17,8 +19,11 @@ interface IDetailsPageProps {
 const DetailsPage: FC<IDetailsPageProps> = () => {
   const details = ["2020.12", "83 961 км", "2 199 куб. см", "2WD"];
   const navigate = useNavigate();
+  const {id} = useParams()
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement | null>(null);
+  const cars = useAppSelector(state => state.cars.cars)
+const  viewStatus = cars.find(car => car.id === +id!).isViewDetails
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -64,7 +69,16 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
       setSlide((prev) => prev - 100);
   };
 
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [load, setLoad] = useState<boolean>(false)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if(load){
+      setTimeout(() => {
+        dispatch(changeViewDetails({id:+id!}))
+      },600)
+    }
+  }, [load]);
 
   return (
     <div className="DetailsPage">
@@ -100,17 +114,17 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
           {
             <div
               className="DetailsPage__slider__placeholder">
-              <div style={{transform: `translateX(-${slide}%)`}} className={`DetailsPage__slider__imgs`}>
+              <div style={{transform: `translateX(-${slide}%)`}} className={`DetailsPage__slider__imgs DetailsPage__slider__imgs`}>
                 {
                   sliderArr.map(slide =>  <img
                     key={slide.place}
-                    className={`DetailsPage__slider__img `}
+                    className={`DetailsPage__slider__img DetailsPage__slider__img-${!viewStatus && 'animate'}`}
                     src={slide.img}
                     onLoad={() => {
-                      setLoaded(true)
+                      setLoad(true)
                     }}
                     style={{
-                      display: loaded ? "block":"none",
+                      display: load ? "block":"none",
                     }}
                     alt="slider-img"
                   />)
