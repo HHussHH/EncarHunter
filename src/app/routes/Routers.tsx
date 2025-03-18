@@ -4,7 +4,7 @@ import {Container} from "@/widgets/ui";
 
 import {ForBusinessPage} from "@/pages/ui/ForBusinessPage/ForBusinessPage.tsx";
 import {ProfilePage} from "@/pages/ui/ProfilePage/ProfilePage.tsx";
-import {useEffect, useMemo} from "react";
+import {useEffect, useMemo, useState} from "react";
 
 export const Routers = () => {
   const TG_WEB_APP = window.Telegram.WebApp;
@@ -37,11 +37,18 @@ export const Routers = () => {
 	}
 
   },[BackButton, navigate, pathname]);
-  
 
+  const [isWide, setIsWide] = useState(window.innerWidth >= 450);
+
+  useEffect(() => {
+	const handleResize = () => setIsWide(window.innerWidth >= 450);
+
+	window.addEventListener("resize", handleResize);
+	return () => window.removeEventListener("resize", handleResize);
+  })
   return (
 	<Routes>
-	  <Route path={ROUTES_PATH.HOME} element={window.innerWidth >= 451 ? <Container><CarsPage /></Container> : <EntryPage  />} />
+	  <Route path={ROUTES_PATH.HOME} element={isWide? <Container><CarsPage /></Container> : <EntryPage  />} />
 	  <Route path={ROUTES_PATH.CARS} element={<Container><CarsPage /></Container>}></Route>
 	  <Route path={ROUTES_PATH.DETAILS_VAC} element={<Container isNav={false}><DetailsPage /></Container>} />
 	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><h1 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Подписка</h1></Container>} />

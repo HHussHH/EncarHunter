@@ -28,7 +28,7 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
   }, [load]);
 
   return (
-	<div className={`CarInfoCard`}
+	<section className={`CarInfoCard`}
 		 {...otherProps}>
 	  <div className="CarInfoCard__body">
 		<div className="CarInfoCard__image">
@@ -56,6 +56,6 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 		  </ul>
 		</div>
 	  </div>
-	</div>
+	</section>
   );
 });

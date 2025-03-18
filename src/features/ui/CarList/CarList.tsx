@@ -1,8 +1,8 @@
 import "./CarList.scss";
-import {FC, Fragment, memo, ReactNode, useCallback, useMemo} from "react";
+import {FC, memo, ReactNode, useCallback, useMemo} from "react";
 import { useAppSelector } from "@/shared/api/types/redux.type.ts";
 import { CarInfoCard } from "@/shared/ui";
-import {Link, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 interface ICarListProps {
   children?: ReactNode;
@@ -15,7 +15,8 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
 
   const handleClick = useCallback(
 	(id: string) => {
-	  navigate(`${id}`);
+	  const path = localStorage.getItem('initialPath_encar')
+	  navigate(`${path}/${id}`);
 	},
 	[navigate]
   );
