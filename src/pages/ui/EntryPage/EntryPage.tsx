@@ -25,6 +25,7 @@ export const EntryPage = () => {
 
   useEffect(() => {
     if (progress >= 100) {
+      console.log(tg)
       const path = localStorage.getItem("initialPath_encar");
       if (path === "/" || path === null) {
         navigate(`/cars`);

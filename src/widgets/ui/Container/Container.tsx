@@ -34,7 +34,7 @@ export const Container: FC<IContainerProps> = ({ children, isNav = true }) => {
 				? padBottom + 20
 				: padBottom + 82
 			  : isNav
-				? 34 + 82
+				? 34 + 72
 				: 0
 		  }px`,
 	  }}

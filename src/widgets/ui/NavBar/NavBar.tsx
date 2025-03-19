@@ -38,7 +38,7 @@ export const NavBar:FC<INavBarProps> = () => {
 	return () => timeoutIds.forEach((id) => id && clearTimeout(id));
   }, [isPlaying]);
   return (
-	<nav className="NavBar" style={{bottom: padBottom && padBottom > 0 ? padBottom - 10 : '24px'}}>
+	<nav className="NavBar" style={{bottom: padBottom && padBottom > 0 ? padBottom - 10 : '10px'}}>
 		<ul className="NavBar__body">
 		  <NavElem path={"cars"} label={"Авто в наличие"} onClick={() => handleClick("car")}>
 			<li className={"NavBar__el"} >
