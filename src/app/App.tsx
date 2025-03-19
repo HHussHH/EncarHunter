@@ -27,9 +27,7 @@ function App() {
     if(localStorage.getItem('initialPath_encar') === "/" && !isWide){
       navigate('/cars');
     }
-    if(localStorage.getItem('initialPath_encar') === "/" || localStorage.getItem('initialPath_encar') === "/cars" && !isWide){
-      navigate('/cars');
-    }
+
     TG_WEB_APP.disableVerticalSwipes();
     TG_WEB_APP.expand();
   }, []);
