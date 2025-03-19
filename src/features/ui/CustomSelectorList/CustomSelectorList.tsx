@@ -2,14 +2,16 @@ import "./CustomSelectorList.scss";
 import { FC, Fragment, ReactNode, useState } from "react";
 import { createPortal } from "react-dom";
 import { CustomListItem } from "@/shared/ui";
+import {useAppDispatch} from "@/shared/api/types/redux.type.ts";
+import {updateFilter} from "@/entities/cars/api/CarsSlice.ts";
 
 interface ICustomSelectorListProps {
   children: ReactNode;
   title: string;
   options: string[];
-  value: string | string[]; // 🔹 Текущее значение
-  onChange: (value: string | string[]) => void; // 🔹 Функция обновления
+  value: string; // 🔹 Текущее значение
   multi?: boolean;
+  path?:string;
 }
 
 export const CustomSelectorList: FC<ICustomSelectorListProps> = (props) => {
@@ -19,13 +21,19 @@ export const CustomSelectorList: FC<ICustomSelectorListProps> = (props) => {
     options,
     title,
     value,
-    onChange,
+    path,
     multi = false,
   } = props
-  // Локальный стейт для хранения выбранных значений
-  const [selected, setSelected] = useState<string | string[]>(value);
 
-  // Обработчик выбора
+  const [selected, setSelected] = useState<string | string[]>(value.split(", "));
+
+  const dispatch = useAppDispatch()
+  const handleChangeFilter = () => {
+    const currentSelected = Array.isArray(selected) ? selected.join(", ") :selected;
+    dispatch(updateFilter({path:path!,value:currentSelected}))
+  }
+
+
   const handleSelect = (opt: string) => {
     if (multi) {
       setSelected((prev) =>
@@ -40,7 +48,7 @@ export const CustomSelectorList: FC<ICustomSelectorListProps> = (props) => {
     }
   };
   const applySelection = () => {
-    onChange(selected);
+    handleChangeFilter();
   };
 
   return createPortal(

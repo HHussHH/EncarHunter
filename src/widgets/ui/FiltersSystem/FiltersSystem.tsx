@@ -1,6 +1,7 @@
 import "./FiltersSystem.scss";
 import {FC, ReactNode, useEffect, useState} from "react";
 import {FiltersSystemInput} from "@/shared/ui/FiltersSystemInput/FiltersSystemInput.tsx";
+import {useAppSelector} from "@/shared/api/types/redux.type.ts";
 
 interface IFiltersSystemProps {
   children?: ReactNode
@@ -8,13 +9,15 @@ interface IFiltersSystemProps {
 
 export const FiltersSystem:FC<IFiltersSystemProps> = () => {
   const [isWide, setIsWide] = useState(window.innerWidth <= 450);
-
+	const CARS_FILTERS = useAppSelector(state => state.cars.filters)
   useEffect(() => {
 	const handleResize = () => setIsWide(window.innerWidth <= 450);
 
 	window.addEventListener("resize", handleResize);
 	return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+
   return (
 	<article className="FiltersSystem">
 		<article className="FiltersSystem__list">
@@ -26,7 +29,11 @@ export const FiltersSystem:FC<IFiltersSystemProps> = () => {
 		  <FiltersSystemInput isActive={true}>
 			{isWide ? "BMW, +1" : "Марка"}
 		  </FiltersSystemInput>
-		  <FiltersSystemInput>
+		  <FiltersSystemInput
+			path={'filters.car.model'}
+			title={"Выберите модели"}
+			isMulti={true}
+			data={{variables:CARS_FILTERS.car.model,options:['M5',"M4","M3","I8","X3"]}}>
 			Модель
 		  </FiltersSystemInput>
 		  <FiltersSystemInput>

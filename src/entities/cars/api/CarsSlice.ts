@@ -1,15 +1,48 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {FiltersTypes, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
+import {FiltersTypes, IFilters, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
 
  interface IStateInit{
-   filters: FiltersTypes[],
+   filters: IFilters,
    sortBy: SortByType[],
    carsLoading: boolean,
   cars: any[]
 }
+interface UpdateFilterPayload {
+  path: string; // Путь к изменяемому полю, например "filters.car.model"
+  value: string; // Новое значение
+}
 
 const initialState: IStateInit = {
-  filters:['Год выпуска'],
+  filters:{
+    car:{
+      gen:"",
+      equipment:"",
+      mark:"",
+      model:""
+    },
+    features:{
+      drive:"",
+      box:"",
+      motorVolume:{
+        endAt:"",
+        startAt:"",
+      },
+      bodyType:"",
+      fuelType:""
+    },
+    liveTime:{
+      endAt:"",
+      startAt:"",
+    },
+    mileage:{
+      maxMileage:"",
+      minMileage:"",
+    },
+    price:{
+      maxPrice:"",
+      minPrice:"",
+    },
+  },
   sortBy:['Сначала новые'],
   carsLoading: false,
   cars: [
@@ -155,16 +188,14 @@ const CarsSlice = createSlice({
     changeLoadStatus: (state, action:PayloadAction<boolean>) => {
       state.carsLoading = action.payload;
     },
-    changeFilters:(state,action:PayloadAction<{value:FiltersTypes | FiltersTypes[]}>) => {
-      const {value} = action.payload;
-      if(Array.isArray(value)){
-        state.filters = [...value];
-      }else{
-        state.filters = [value];
+    updateFilter: (state, action: PayloadAction<UpdateFilterPayload>) => {
+      const { path, value } = action.payload;
+      const keys = path.split(".");
+      let obj: any = state;
+      for (let i = 0; i < keys.length - 1; i++) {
+        obj = obj[keys[i]];
       }
-      if(state.filters.length === 0){
-        state.filters = ['Год выпуска']
-      }
+      obj[keys[keys.length - 1]] = value;
     },
     changeSortBy:(state,action:PayloadAction<{value:SortByType |SortByType[] }>) => {
       const {value} = action.payload;
@@ -180,6 +211,6 @@ const CarsSlice = createSlice({
   }
 })
 
-export const {changeFilters,changeSortBy,changeViewDetails,changeLoadStatus} = CarsSlice.actions;
+export const {updateFilter,changeViewDetails,changeLoadStatus} = CarsSlice.actions;
 export default CarsSlice.reducer
 
