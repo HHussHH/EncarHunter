@@ -1,22 +1,25 @@
-import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import {Outlet, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {CarsPage, DetailsPage, EntryPage} from "@/pages/ui";
 import {Container} from "@/widgets/ui";
 
-import {useEffect, useState} from "react";
+import {ForBusinessPage} from "@/pages/ui/ForBusinessPage/ForBusinessPage.tsx";
+import {ProfilePage} from "@/pages/ui/ProfilePage/ProfilePage.tsx";
+import {useEffect, useMemo, useState} from "react";
 
 export const Routers = () => {
   const TG_WEB_APP = window.Telegram.WebApp;
   const BackButton = TG_WEB_APP.BackButton;
+
   const {pathname} = useLocation();
   const navigate = useNavigate();
   const ROUTES_PATH = {
-  HOME:"/",
+	HOME:"/",
 	CARS:"/cars",
-  	DETAILS_VAC:"/cars/:id",
+	DETAILS_VAC:"/cars/:id",
 	SUBSCRIBE:"/subscribe",
 	ABOUT:"/AboutUs",
-  NOT_FOUND:"*"
-} as const
+	NOT_FOUND:"*"
+  } as const
 
   useEffect(() => {
 	const pathArr = pathname.split("/")
@@ -26,7 +29,7 @@ export const Routers = () => {
 		BackButton.hide();
 	  });
 	  TG_WEB_APP.onEvent('backButtonClicked', function() {
-	  	pathArr.pop()
+		pathArr.pop()
 		navigate(`${pathArr.join("/")}`);
 	  });
 	}else{
@@ -45,7 +48,7 @@ export const Routers = () => {
   })
   return (
 	<Routes>
-	  <Route path={ROUTES_PATH.HOME} element={isWide ? <Container><CarsPage /></Container> : <EntryPage  />} />
+	  <Route path={ROUTES_PATH.HOME} element={isWide? <Container><CarsPage /></Container> : <EntryPage  />} />
 	  <Route path={ROUTES_PATH.CARS} element={<Container><CarsPage /></Container>}></Route>
 	  <Route path={ROUTES_PATH.DETAILS_VAC} element={<Container isNav={false}><DetailsPage /></Container>} />
 	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><h1 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Подписка</h1></Container>} />

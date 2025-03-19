@@ -19,15 +19,14 @@ function App() {
     if(pathname.includes("tgWebAppData")){
       localStorage.setItem('initialPath_encar',"/");
     }else{
-    localStorage.setItem('initialPath_encar',pathname);
+      localStorage.setItem('initialPath_encar',pathname);
     }
     if(isWide){
-	navigate('/');
+      navigate('/');
     }
     if(localStorage.getItem('initialPath_encar') === "/" && !isWide){
       navigate('/cars');
     }
-
     TG_WEB_APP.disableVerticalSwipes();
     TG_WEB_APP.expand();
   }, []);
@@ -58,9 +57,9 @@ function App() {
 
 
   return (
-   <>
-     <Routers/>
-   </>
+    <>
+      <Routers/>
+    </>
   );
 }
 
