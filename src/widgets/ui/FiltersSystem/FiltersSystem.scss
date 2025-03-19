@@ -17,6 +17,7 @@
   }
   @media (max-width: 450px) {
     flex-direction: row;
+    padding-inline:0;
     height: auto;
     overflow: hidden;
     background:none;

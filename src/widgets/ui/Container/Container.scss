@@ -1,14 +1,11 @@
 .Container {
   height: 100dvh;
-  padding: 5px 5px 0;
+  padding: 5px 0 0;
   @media (min-width: 451px) {
-    padding: 5px 20px 20px;
+    padding: 0 20px 20px;
   }
   @media (min-width: 1390px) {
-    padding: 5px 65px 20px;
-  }
-  @media (min-width: 1440px) {
-    padding: 5px 65px 20px;
+    padding: 0 140px 20px;
   }
   &__btn{
     z-index: 999;

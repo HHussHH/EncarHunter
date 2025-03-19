@@ -44,6 +44,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 450px) {
+      gap:20px;
+    }
   }
   &__label{
     width: max-content;

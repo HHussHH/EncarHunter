@@ -6,12 +6,17 @@
   overflow-y: scroll;
   height: 100dvh;
   padding: inherit;
+  padding-inline: 0;
   &__header{
     display: flex;
     flex-direction: column;
     gap:40px;
+    padding: 10px;
     @media (max-width: 450px) {
       gap:0;
     }
+  }
+  &__body{
+    padding: 10px;
   }
 }
