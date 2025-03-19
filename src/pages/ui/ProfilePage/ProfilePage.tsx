@@ -93,28 +93,6 @@ export const ProfilePage:FC<IProfilePageProps> = () => {
 		  </p>
 		</header>
 		<div className={"ProfilePage__selectors"}>
-		  <PreferencesSelector
-			color="hold-yellow"
-			isMulti={true}
-			title={"Выберите города"}
-			placeholder={"Выберите города"}
-			changeHandler={changeLocation}
-			isPlaceholder={profile.locations.length === 0}
-			isWhite={true}
-			value={profile.locations}
-			options={[...locationTypes]}
-		  />
-		  <PreferencesSelector
-			color="hold-yellow"
-			isMulti={true}
-			title={"Выберите виды работ"}
-			placeholder={"Выберите виды работ"}
-			changeHandler={changeWork}
-			isPlaceholder={profile.workTypes.length === 0}
-			isWhite={true}
-			value={profile.workTypes}
-			options={[...workTypes]}
-		  />
 		</div>
 		<div className="ProfilePage__footer" onClick={() => setSelectFilter(prev => !prev)}>
 		  <div className={`ProfilePage__toggle ProfilePage__toggle-${selectFilter ? "active":"false"}`}>

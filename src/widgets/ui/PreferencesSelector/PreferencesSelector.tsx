@@ -14,11 +14,11 @@ interface IPreferencesSelectorProps {
   isMulti?:boolean,
   isWhite?:boolean,
   isPlaceholder:boolean,
-  value: string | string[]; // 🔹 Добавил value
+  value: string ;
   changeHandler: (value: string | string[]) => void,
 }
 
-export const PreferencesSelector:FC<IPreferencesSelectorProps> = ({value,isPlaceholder, isMulti = false,color,isWhite=false,placeholder,label,title,options,changeHandler,description}) => {
+export const PreferencesSelector:FC<IPreferencesSelectorProps> = ({value,isPlaceholder, isMulti = false,color,isWhite=false,placeholder,label,title,options,description}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleIsOpen = () =>{
 	setIsOpen(prev => !prev)
@@ -45,7 +45,6 @@ export const PreferencesSelector:FC<IPreferencesSelectorProps> = ({value,isPlace
 	  {isOpen && <CustomSelectorList
 		value={value}
 		multi={isMulti}
-		onChange={changeHandler}
 		title={title}
 		options={options}>
 				<Button onClick={toggleIsOpen} size="big" theme="green">

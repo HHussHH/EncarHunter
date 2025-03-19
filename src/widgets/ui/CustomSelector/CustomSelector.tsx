@@ -11,13 +11,13 @@ interface ICustomSelectorProps {
   icon: ReactNode
   type:string
   options: string[]
-  value: string | string[];
+  value: string;
   multi?:boolean,
   changeHandler: (value: string | string[]) => void,
   selected?: boolean,
 }
 
-export const CustomSelector:FC<ICustomSelectorProps> = ({changeHandler,selected = false,value,isMulti,title,icon,type,options}:ICustomSelectorProps) => {
+export const CustomSelector:FC<ICustomSelectorProps> = ({selected = false,value,isMulti,title,icon,type,options}:ICustomSelectorProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleIsOpen = () =>{
@@ -58,7 +58,6 @@ export const CustomSelector:FC<ICustomSelectorProps> = ({changeHandler,selected 
 	  {isOpen && <CustomSelectorList
 				value={value}
 				multi={isMulti}
-				onChange={changeHandler}
 				title={title}
 				options={options}>
 				<Button onClick={toggleIsOpen} size="big" theme="blue">
