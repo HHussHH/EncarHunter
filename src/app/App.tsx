@@ -27,7 +27,7 @@ function App() {
     if(localStorage.getItem('initialPath_encar') === "/" && !isWide){
       navigate('/cars');
     }
-    if(localStorage.getItem('initialPath_encar') === "/" || localStorage.getItem('initialPath_encar') === "/cars" && !pathname.includes("tgWebAppData")){
+    if(localStorage.getItem('initialPath_encar') === "/" || localStorage.getItem('initialPath_encar') === "/cars" && !TG_WEB_APP.initDataUnsafe.user){
       navigate('/cars');
     }
     TG_WEB_APP.disableVerticalSwipes();

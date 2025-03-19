@@ -21,9 +21,10 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 
   useEffect(() => {
 	if(load){
-	  setTimeout(() => {
+	  const interval = setTimeout(() => {
 		dispatch(changeLoadStatus(true))
 	  },600)
+	  return () => clearInterval(interval);
 	}
   }, [load]);
 
