@@ -3,18 +3,20 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  padding: 0 10px;
   @media (max-width: 550px) {
-    margin-bottom: 20px;
+    margin-bottom: 13px;
   }
   &__info{
     font-weight: 700;
     font-size: 24px;
+    line-height: 100%;
   }
   &__sortBy{
     font-weight: 400;
     font-size: 14px;
     cursor: pointer;
-
+    line-height: 100%;
     @media (max-width: 550px) {
       span{
         &:first-child{

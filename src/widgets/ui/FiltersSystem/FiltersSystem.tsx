@@ -23,8 +23,8 @@ export const FiltersSystem:FC<IFiltersSystemProps> = () => {
 							🚘 Все фильтры
 						</FiltersSystemInput>
 		  }
-		  <FiltersSystemInput>
-			Марка
+		  <FiltersSystemInput isActive={true}>
+			{isWide ? "BMW, +1" : "Марка"}
 		  </FiltersSystemInput>
 		  <FiltersSystemInput>
 			Модель
