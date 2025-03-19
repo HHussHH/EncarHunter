@@ -48,7 +48,7 @@ export const Routers = () => {
   })
   return (
 	<Routes>
-	  <Route path={ROUTES_PATH.HOME} element={isWide? <Container><CarsPage /></Container> : <EntryPage  />} />
+	  <Route path={ROUTES_PATH.HOME} element={isWide || !TG_WEB_APP.initDataUnsafe.user ? <Container><CarsPage /></Container> : <EntryPage  />} />
 	  <Route path={ROUTES_PATH.CARS} element={<Container><CarsPage /></Container>}></Route>
 	  <Route path={ROUTES_PATH.DETAILS_VAC} element={<Container isNav={false}><DetailsPage /></Container>} />
 	  <Route path={ROUTES_PATH.SUBSCRIBE} element={<Container><h1 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Подписка</h1></Container>} />

@@ -21,10 +21,13 @@ function App() {
     }else{
       localStorage.setItem('initialPath_encar',pathname);
     }
+    if(!TG_WEB_APP.initDataUnsafe.user){
+      navigate('/cars');
+    }
     if(isWide){
       navigate('/');
     }
-    if(localStorage.getItem('initialPath_encar') === "/" && !isWide){
+    if(localStorage.getItem('initialPath_encar') === "/" && !isWide || !TG_WEB_APP.initDataUnsafe.user){
       navigate('/cars');
     }
     TG_WEB_APP.disableVerticalSwipes();
