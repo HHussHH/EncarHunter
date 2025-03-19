@@ -25,7 +25,7 @@ export const CustomSelectorList: FC<ICustomSelectorListProps> = (props) => {
     multi = false,
   } = props
 
-  const [selected, setSelected] = useState<string | string[]>(value.split(", "));
+  const [selected, setSelected] = useState<string | string[]>(value.length > 0 ? value.split(", ") : []);
 
   const dispatch = useAppDispatch()
   const handleChangeFilter = () => {

@@ -1,15 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {FiltersTypes, IFilters, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
+import { IFilters, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
 
  interface IStateInit{
    filters: IFilters,
    sortBy: SortByType[],
    carsLoading: boolean,
-  cars: any[]
+    cars: any[]
 }
 interface UpdateFilterPayload {
-  path: string; // Путь к изменяемому полю, например "filters.car.model"
-  value: string; // Новое значение
+  path: string;
+  value: string;
 }
 
 const initialState: IStateInit = {
@@ -196,14 +196,6 @@ const CarsSlice = createSlice({
         obj = obj[keys[i]];
       }
       obj[keys[keys.length - 1]] = value;
-    },
-    changeSortBy:(state,action:PayloadAction<{value:SortByType |SortByType[] }>) => {
-      const {value} = action.payload;
-      if(Array.isArray(value)){
-        state.sortBy = [...value];
-      }else{
-        state.sortBy = [value];
-      }
     },
     changeViewDetails: (state,action:PayloadAction<{id:number}>) => {
       state.cars.filter((car) => car.id === action.payload.id)[0].isViewDetails = true

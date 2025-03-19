@@ -7,6 +7,12 @@
   height: 100dvh;
   padding: inherit;
   padding-inline: 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE и Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
   &__header{
     display: flex;
     flex-direction: column;

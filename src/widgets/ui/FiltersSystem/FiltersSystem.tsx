@@ -26,27 +26,59 @@ export const FiltersSystem:FC<IFiltersSystemProps> = () => {
 							🚘 Все фильтры
 						</FiltersSystemInput>
 		  }
-		  <FiltersSystemInput isActive={true}>
-			{isWide ? "BMW, +1" : "Марка"}
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите марку"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}>
+			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Марка" }
 		  </FiltersSystemInput>
 		  <FiltersSystemInput
 			path={'filters.car.model'}
 			title={"Выберите модели"}
 			isMulti={true}
+			isActive={!!CARS_FILTERS.car.model}
 			data={{variables:CARS_FILTERS.car.model,options:['M5',"M4","M3","I8","X3"]}}>
-			Модель
+			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Модель" }
 		  </FiltersSystemInput>
-		  <FiltersSystemInput>
-			Поколение
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите поколение"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}>
+			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Поколение" }
 		  </FiltersSystemInput>
-		  <FiltersSystemInput multi={{variables:['Год от',"Год до"]}}/>
-		  <FiltersSystemInput>
-			Дата выпуска до
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите года"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}
+							  multi={{variables:['Год от',"Год до"]}}/>
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите дату выпуска"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}>
+			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Дата выпуска до" }
 		  </FiltersSystemInput>
-		  <FiltersSystemInput multi={{variables:['Цена от, ₽',"Цена до, ₽"]}}/>
-		  <FiltersSystemInput multi={{variables:['Пробег от',"Пробег до"]}}/>
-		  <FiltersSystemInput>
-				Характеристики
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите цены"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}
+							  multi={{variables:['Цена от, ₽',"Цена до, ₽"]}}/>
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите пробег"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}
+							   multi={{variables:['Пробег от',"Пробег до"]}}/>
+		  <FiltersSystemInput path={'filters.car.model'}
+							  title={"Выберите характеристики"}
+							  isMulti={true}
+							  isActive={!!CARS_FILTERS.car.model}
+							  data={{variables:CARS_FILTERS.car.model,options:['В1',"В2","В3","В4","В4"]}}>
+			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Характеристики" }
 		  </FiltersSystemInput>
 		</article>
 	  	<footer className={'FiltersSystem__footer'}>

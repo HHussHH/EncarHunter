@@ -2,8 +2,7 @@ import {Outlet, Route, Routes, useLocation, useNavigate} from "react-router-dom"
 import {CarsPage, DetailsPage, EntryPage} from "@/pages/ui";
 import {Container} from "@/widgets/ui";
 
-import {ForBusinessPage} from "@/pages/ui/ForBusinessPage/ForBusinessPage.tsx";
-import {ProfilePage} from "@/pages/ui/ProfilePage/ProfilePage.tsx";
+
 import {useEffect, useMemo, useState} from "react";
 
 export const Routers = () => {

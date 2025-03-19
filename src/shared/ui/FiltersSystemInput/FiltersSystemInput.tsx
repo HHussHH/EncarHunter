@@ -2,8 +2,6 @@ import "./FiltersSystemInput.scss";
 import {FC, useState} from "react";
 import {CustomSelectorList} from "@/features/ui";
 import {Button} from "@/shared/ui";
-import {useAppDispatch} from "@/shared/api/types/redux.type.ts";
-import {updateFilter} from "@/entities/cars/api/CarsSlice.ts";
 
 interface IFiltersSystemInputProps {
   children?: string;
