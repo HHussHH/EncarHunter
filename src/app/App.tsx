@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(TG_WEB_APP.initDataUnsafe.user){
+    if(pathname.includes("tgWebAppData")){
       localStorage.setItem('initialPath_encar',"/");
     }else{
     localStorage.setItem('initialPath_encar',pathname);
@@ -27,7 +27,7 @@ function App() {
     if(localStorage.getItem('initialPath_encar') === "/" && !isWide){
       navigate('/cars');
     }
-    if(localStorage.getItem('initialPath_encar') === "/" || localStorage.getItem('initialPath_encar') === "/cars" && !TG_WEB_APP.initDataUnsafe.user){
+    if(localStorage.getItem('initialPath_encar') === "/" || localStorage.getItem('initialPath_encar') === "/cars" && !isWide){
       navigate('/cars');
     }
     TG_WEB_APP.disableVerticalSwipes();
