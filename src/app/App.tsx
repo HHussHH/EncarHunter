@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(pathname.includes("tgWebAppData")){
+    if(TG_WEB_APP.initDataUnsafe.user){
       localStorage.setItem('initialPath_encar',"/");
     }else{
     localStorage.setItem('initialPath_encar',pathname);
