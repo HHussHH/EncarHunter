@@ -1,0 +1,26 @@
+.SortSystem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  @media (max-width: 550px) {
+    margin-bottom: 20px;
+  }
+  &__info{
+    font-weight: 700;
+    font-size: 24px;
+  }
+  &__sortBy{
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+
+    @media (max-width: 550px) {
+      span{
+        &:first-child{
+          display: none;
+        }
+      }
+    }
+  }
+}

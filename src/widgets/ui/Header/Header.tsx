@@ -1,6 +1,7 @@
 import "./Header.scss";
-import {FC, ReactNode, useEffect} from "react";
+import {FC, ReactNode} from "react";
 import Logo from "@/shared/assets/EntryPage/TestLogo.svg"
+import {NavLink} from "react-router-dom";
 
 interface IHeaderProps {
   children?: ReactNode
@@ -8,18 +9,30 @@ interface IHeaderProps {
 
 export const Header:FC<IHeaderProps> = () => {
   return (
-	<div className="Header">
+	<header className="Header">
 		<div className="Header__logo">
 		  <img src={Logo} alt={"logo"} width={200} height={78}/>
-		  <span>Более 30 000 авто из Южной Кореи
-уже доступны к заказу</span>
 		</div>
-	  <div className="Header__btns">
+	<div className={"Header__content"}>
+	  <nav className="Header__nav">
+		<NavLink
+		  className={({isActive}) =>
+			`Header__nav__el Header__nav__el-${isActive ? "active":"none"}`}
+		  to={'/cars'}>Поиск авто</NavLink>
+		<NavLink className={({isActive}) =>
+		  `Header__nav__el Header__nav__el-${isActive ? "active":"none"}`}
+				 to={'/subscribe'}>Подписка на авто</NavLink>
+		<NavLink className={({isActive}) =>
+		  `Header__nav__el Header__nav__el-${isActive ? "active":"none"}`}
+				 to={'/about'}>О нас</NavLink>
+	  </nav>
+	  <aside className="Header__btns">
 		<button className="Header__btn Header__btn-telegram">телеграм канал</button>
 		<button className="Header__btn Header__btn-bot">наш бот</button>
 		<button className="Header__btn Header__btn-car">заказать авто</button>
-	  </div>
+	  </aside>
 	</div>
+	</header>
   );
 };
 

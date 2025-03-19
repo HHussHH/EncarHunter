@@ -5,11 +5,12 @@ import {
 import LocationMap from "@/shared/assets/location.svg?react";
 import CarIcon from "@/shared/assets/CarsList/car.svg?react";
 import {useAppDispatch, useAppSelector} from "@/shared/api/types/redux.type.ts";
-import {CustomSelector} from "@/widgets/ui";
+import {CustomSelector, SortSystem} from "@/widgets/ui";
 import {CarList} from "@/features/ui";
 import {changeFilters, changeSortBy} from "@/entities/cars/api/CarsSlice.ts";
 import {Header} from "@/widgets/ui/Header/Header.tsx";
 import {useEffect, useState} from "react";
+import {FiltersSystem} from "@/widgets/ui/FiltersSystem/FiltersSystem.tsx";
 
 export const CarsPage = () => {
 const state = useAppSelector((state) => state.cars)
@@ -36,24 +37,27 @@ return (
 	<div className="CarsPage">
 	  { isWide && <Header />}
 	  <div className="CarsPage__header">
-		<CustomSelector
-		  selected={true}
-		  icon={<LocationMap width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>}
-		  type="Фильтры"
-		  title={"Фильтры"}
-		  changeHandler={changeFilter}
-		  value={state.filters}
-		  isMulti={true}
-		  options={[...FilterVariables]}
-		/>		<CustomSelector
-		  options={[...SortBy]}
-		  value={state.sortBy}
-		  changeHandler={changeSort}
-		  title={"Сортировка"}
-		  icon={<CarIcon  width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>} type="Сортировка"/>	  </div>
-	  <div className="CarsPage__body">
-		  <CarList title="Последние объявления" />
+		{/*<CustomSelector*/}
+		{/*  selected={true}*/}
+		{/*  icon={<LocationMap width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>}*/}
+		{/*  type="Фильтры"*/}
+		{/*  title={"Фильтры"}*/}
+		{/*  changeHandler={changeFilter}*/}
+		{/*  value={state.filters}*/}
+		{/*  isMulti={true}*/}
+		{/*  options={[...FilterVariables]}*/}
+		{/*/>		<CustomSelector*/}
+		{/*  options={[...SortBy]}*/}
+		{/*  value={state.sortBy}*/}
+		{/*  changeHandler={changeSort}*/}
+		{/*  title={"Сортировка"}*/}
+		{/*  icon={<CarIcon  width={isWide ? 24 : 12} height={isWide ? 24 : 12}/>} type="Сортировка"/>	*/}
+		<FiltersSystem/>
+		<SortSystem/>
 	  </div>
+	  <article className="CarsPage__body">
+		  <CarList />
+	  </article>
 	</div>
   );
 };

@@ -1,16 +1,4 @@
 .CarList{
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap:10px;
-  &__title{
-    font-weight: bold;
-    font-size: 24px;
-    color:#fff;
-    padding-left: 12px;
-
-  }
-  &__list{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -30,5 +18,4 @@
       flex-wrap: wrap;
       flex-direction: row;
     }
-  }
 }

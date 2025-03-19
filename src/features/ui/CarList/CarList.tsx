@@ -6,10 +6,9 @@ import { useNavigate} from "react-router-dom";
 
 interface ICarListProps {
   children?: ReactNode;
-  title: string;
 }
 
-export const CarList: FC<ICarListProps> = memo(({ title }) => {
+export const CarList: FC<ICarListProps> = memo(() => {
   const { cars } = useAppSelector(state => state.cars);
   const navigate = useNavigate();
 
@@ -36,11 +35,8 @@ export const CarList: FC<ICarListProps> = memo(({ title }) => {
   }, [cars]);
 
   return (
-	<div className="CarList">
-	  <h1 className="CarList__title">{title}</h1>
-	  <div className="CarList__list">
+	<article className="CarList">
 	  {carsList}
-	  </div>
-	</div>
+	</article>
   );
 });

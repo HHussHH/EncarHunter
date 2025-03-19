@@ -8,6 +8,10 @@
   padding: inherit;
   &__header{
     display: flex;
-    gap:10px;
+    flex-direction: column;
+    gap:40px;
+    @media (max-width: 450px) {
+      gap:0;
+    }
   }
 }
