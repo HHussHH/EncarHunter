@@ -59,7 +59,7 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 		</header>
 		<footer className="CarInfoCard__content">
 		  <h2 className="CarInfoCard__title">{title}</h2>
-		  <span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} руб</span>
+		  <span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} ₩</span>
 		  <ul className="CarInfoCard__details">
 			{[production, mileage, engine_capacity, drive].map((opt) => (
 			  <Fragment key={opt}>

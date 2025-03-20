@@ -28,7 +28,7 @@ export const CarList: FC<ICarListProps> = memo(() => {
 		  carId={item.id}
 		  onClick={() => handleClick(item.id.toString())}
 		  mileage={`${item.milleage} км`}
-		  price={item.price * 10000}
+		  price={item.price}
 		  engine_capacity={"2 199 куб. см"}
 		  drive={`${item.badge}`}
 		  production={item.form_year.toString()}

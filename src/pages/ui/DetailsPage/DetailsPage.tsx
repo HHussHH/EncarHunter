@@ -23,7 +23,7 @@ const DetailsPage: FC<IDetailsPageProps> = () => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement | null>(null);
   const cars = useAppSelector(state => state.cars.cars)
-const  viewStatus = cars.find(car => car.id === +id!).isViewDetails
+const  viewStatus = cars.find(car => car.id === +id!)!.isViewDetails
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
