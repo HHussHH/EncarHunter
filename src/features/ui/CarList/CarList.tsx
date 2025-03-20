@@ -20,25 +20,36 @@ export const CarList: FC<ICarListProps> = memo(() => {
 	[navigate]
   );
 
-  const carsList = useMemo(() => {
-	return cars.map((item) => (
-		<CarInfoCard
-		  title={`${item.brand} ${item.model}`}
-		  key={item.id}
-		  carId={item.id}
-		  onClick={() => handleClick(item.id.toString())}
-		  mileage={`${item.milleage} км`}
-		  price={item.price}
-		  engine_capacity={"2 199 куб. см"}
-		  drive={`${item.badge}`}
-		  production={item.form_year.toString()}
-		/>
-	));
-  }, [cars]);
 
   return (
 	<article className="CarList">
-	  {carsList}
+	  {
+		cars.length > 0 ? cars.map((item) => (
+		  <CarInfoCard
+			title={`${item.brand} ${item.model}`}
+			key={item.id}
+			carId={item.id}
+			onClick={() => handleClick(item.id.toString())}
+			mileage={`${item.milleage} км`}
+			price={item.price}
+			engine_capacity={"2 199 куб. см"}
+			drive={`${item.badge.split(" ")[3] ? item.badge.split(" ")[3] : ""}`}
+			production={item.form_year.toString()}
+		  />
+		)) :
+
+		  [1,2,3,4,5,6].map((plch) => <CarInfoCard
+			title={`Загрузка...`}
+			key={plch}
+			carId={plch}
+			onClick={() => {}}
+			mileage={`Загрузка...`}
+			price={0}
+			engine_capacity={"Загрузка..."}
+			drive={`Загрузка...`}
+			production={'Загрузка...'}
+		  />)
+	  }
 	</article>
   );
 });
