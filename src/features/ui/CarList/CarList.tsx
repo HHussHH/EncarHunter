@@ -23,13 +23,15 @@ export const CarList: FC<ICarListProps> = memo(() => {
   const carsList = useMemo(() => {
 	return cars.map((item) => (
 		<CarInfoCard
+		  title={`${item.brand} ${item.model}`}
 		  key={item.id}
-		  onClick={() => handleClick(item.id)}
-		  mileage={"83 961 км"}
-		  price={3031968}
+		  carId={item.id}
+		  onClick={() => handleClick(item.id.toString())}
+		  mileage={`${item.milleage} км`}
+		  price={item.price * 10000}
 		  engine_capacity={"2 199 куб. см"}
-		  drive={"2WD"}
-		  production={"2020.12"}
+		  drive={`${item.badge}`}
+		  production={item.form_year.toString()}
 		/>
 	));
   }, [cars]);

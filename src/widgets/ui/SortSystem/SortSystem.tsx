@@ -8,11 +8,11 @@ interface ISortSystemProps {
 export const SortSystem:FC<ISortSystemProps> = () => {
   return (
 	<div className="SortSystem">
-	  <label className="SortSystem__info">2 322 объявлений</label>
+	  <label className="SortSystem__info">2 322 авто в наличие</label>
 	  <label className="SortSystem__sortBy">
+		<span>Сортировка:</span>
+		<span> сначала новые </span>
 		↕️
-		<span> Сортировка:</span>
-		<span> сначала новые</span>
 	  </label>
 	</div>
   );

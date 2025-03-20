@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProgressBar } from "@/shared/ui";
-import Logo from "@/shared/assets/EntryPage/TestLogo.svg?react"
+import Logo from "@/shared/assets/EntryPage/NewLogo.svg?react"
 import carIcon from "@assets/EntryPage/CarIcon.svg";
 import "./EntryPage.scss";
 import PhotoCollage from "@/widgets/ui/PhotoCollage/PhotoCollage";

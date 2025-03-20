@@ -102,3 +102,35 @@ export interface IFilters {
   }
 }
 
+
+export interface ISetFilters {
+  car:{
+    model:[string,number][],
+    mark:[string,number][],
+    gen:string,
+    equipment:string // комплектация
+  },
+  liveTime:{ //года выпуска от и до
+    startAt: string,
+    endAt: string,
+  },
+  price:{
+    minPrice:string,
+    maxPrice:string,
+  },
+  mileage:{
+    minMileage:string,
+    maxMileage:string,
+  },
+  features:{
+    fuelType:string, //вид топлива
+    bodyType:string, //тип кузова
+    box:string, // коробка
+    drive:string, //Привод
+    motorVolume:{ // объем мотора
+      startAt: string,
+      endAt: string,
+    }
+  }
+}
+

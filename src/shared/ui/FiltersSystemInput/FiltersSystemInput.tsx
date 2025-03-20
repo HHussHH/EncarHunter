@@ -11,7 +11,7 @@ interface IFiltersSystemInputProps {
   isMulti?: boolean;
   data?:{
 	variables: string;
-	options:string[];
+	options:string[] | [string, number][];
   };
   title?:string;
   path?:string;
@@ -27,10 +27,11 @@ export const FiltersSystemInput:FC<IFiltersSystemInputProps> = ({path,isMulti,ti
 <>
   <article className={`CustomInput CustomInput-${isActive && "active"}`} onClick={toggleOpen}>
 	{multi && <div className={'CustomInput-multi'}/>}
-	{!multi && <label className="CustomInput__label">{children}</label>}
+	{!multi && <label className="CustomInput__label">{children} <div className={'CustomInput__arrow'}/></label>}
 	{
 	  multi && <div className={'CustomInput__labels'}>{	multi.variables.map((text) =>
-		<label className="CustomInput__label">{text}</label>)}</div>
+		<label className="CustomInput__text">{text}</label>)}
+      </div>
 
 	}
   </article>

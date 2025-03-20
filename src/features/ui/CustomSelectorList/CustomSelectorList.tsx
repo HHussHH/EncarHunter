@@ -8,7 +8,7 @@ import {updateFilter} from "@/entities/cars/api/CarsSlice.ts";
 interface ICustomSelectorListProps {
   children: ReactNode;
   title: string;
-  options: string[];
+  options: string[] | [string,number][];
   value: string; // 🔹 Текущее значение
   multi?: boolean;
   path?:string;
@@ -55,16 +55,31 @@ export const CustomSelectorList: FC<ICustomSelectorListProps> = (props) => {
     <div className="CustomSelectorList" id="CustomSelectorList">
       <h1 className="CustomSelectorList__title">{title}</h1>
       <ul className="CustomSelectorList__ul">
-        {options.map((opt) => (
-          <Fragment key={opt}>
-            <CustomListItem
-              multi={multi}
-              value={opt}
-              selected={Array.isArray(selected) ? selected.includes(opt) : selected === opt}
-              onClick={() => handleSelect(opt)}
-            />
-          </Fragment>
-        ))}
+        {options.map((opt) => {
+          if(Array.isArray(opt)) {
+            return (
+              <Fragment key={opt[0]}>
+                <CustomListItem
+                  multi={multi}
+                  value={`${opt[0]} (${opt[1]})`}
+                  selected={Array.isArray(selected) ? selected.includes(opt[0]) : selected === opt[0]}
+                  onClick={() => handleSelect(opt[0])}
+                />
+              </Fragment>
+            )
+          }else{
+            return (
+              <Fragment key={opt}>
+                <CustomListItem
+                  multi={multi}
+                  value={opt}
+                  selected={Array.isArray(selected) ? selected.includes(opt) : selected === opt}
+                  onClick={() => handleSelect(opt)}
+                />
+              </Fragment>
+            )
+          }
+        })}
       </ul>
 
       <div className="CustomSelectorList__btns" onClick={applySelection}>
