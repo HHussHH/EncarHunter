@@ -123,7 +123,7 @@ export interface ISetFilters {
     maxMileage:string,
   },
   features:{
-    fuelType:string, //вид топлива
+    fuelType:[string,number][], //вид топлива
     bodyType:string, //тип кузова
     box:string, // коробка
     drive:string, //Привод

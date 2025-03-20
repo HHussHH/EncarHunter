@@ -1,69 +1,85 @@
 import "./CarInfoCard.scss";
-import { FC, Fragment, HTMLProps, memo, useEffect, useState } from "react";
+import { FC, Fragment, HTMLProps, useEffect, useState } from "react";
 import { PositionDetails } from "@/shared/ui";
-import carImg from "@/shared/assets/CarsList/CardPlaceHolder.png";
 import { useAppDispatch, useAppSelector } from "@/shared/api/types/redux.type.ts";
-import { changeLoadStatus } from "@/entities/cars/api/CarsSlice.ts";
+import { changeCarPhoto, changeLoadStatus } from "@/entities/cars/api/CarsSlice.ts";
 import { useLazyGetCarPhotosWithIdQuery } from "@/entities/cars/api/CarsApi.ts";
 
 interface ICarInfoCardProps extends HTMLProps<HTMLDivElement> {
-  price: number;
-  mileage: string;
-  engine_capacity: string;
-  drive: string;
-  production: string;
-  title: string;
-  carId: number;
+  price: number | null;
+  mileage: string | null;
+  engine_capacity: string | null;
+  drive: string | null;
+  production: string | null;
+  car_title: string | null;
+  carId: number | null;
 }
 
-export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
-  const { price, mileage, title, carId, engine_capacity, drive, production, ...otherProps } = props;
+export const CarInfoCard: FC<ICarInfoCardProps> = (props) => {
+  const { price, mileage, car_title, carId, engine_capacity, drive, production, ...otherProps } = props;
   const dispatch = useAppDispatch();
-  const { carsLoading } = useAppSelector((state) => state.cars);
+  const car = useAppSelector(state => state.cars.cars.find(car => car.id === carId));
+
   const [load, setLoad] = useState<boolean>(false);
-  const [getPhoto, { data, isSuccess }] = useLazyGetCarPhotosWithIdQuery();
+  const [photoSrc, setPhotoSrc] = useState<string | null>(car?.imgSrc || null);
+  const [getPhoto] = useLazyGetCarPhotosWithIdQuery();
 
   useEffect(() => {
-	if (carId) {
-	  getPhoto({ id: carId }).then((data) =>{
-		console.log(data!.data)
-	  });
+	if (!carId) return; // Если нет ID, выходим
+
+	if (car?.imgSrc) {
+	  setPhotoSrc(car.imgSrc); // Если фото уже есть в редаксе, берем оттуда
+	  return;
 	}
-  }, []);
+
+	getPhoto({ id: carId }).then((response) => {
+	  if (response.data?.main) {
+		const imgSrc = `data:image/png;base64,${response.data.main}`;
+		setPhotoSrc(imgSrc);
+		dispatch(changeCarPhoto({ carId, src: imgSrc }));
+	  }
+	});
+  }, [carId, car?.imgSrc, dispatch, getPhoto]);
 
   useEffect(() => {
-	if (load) {
-	  const interval = setTimeout(() => {
-		dispatch(changeLoadStatus(true));
+	if (load && carId) {
+	  const timer = setTimeout(() => {
+		dispatch(changeLoadStatus({ status: true, carId }));
 	  }, 600);
-	  return () => clearInterval(interval);
+	  return () => clearTimeout(timer);
 	}
-  }, [load]);
-
+  }, [load, carId, dispatch]);
 
   return (
 	<article className="CarInfoCard" {...otherProps}>
 	  <div className="CarInfoCard__body">
 		<header className="CarInfoCard__image">
 		  <div className="CarInfoCard__image__placeholder">
-			{
-			  isSuccess && 	<img
-								src={`data:image/png;base64,${data.main}`}
-								alt="car"
-								className={`${load && !carsLoading ? "CarInfoCard__load" : ""}`}
-								onLoad={() => setLoad(true)}
-								style={{ display: "block" }}
+			{photoSrc && (
+			  <img
+				src={photoSrc}
+				alt="car"
+				className={load && !car?.carLoading ? "CarInfoCard__load" : ""}
+				onLoad={() => setLoad(true)}
 			  />
-			}
+			)}
 		  </div>
 		</header>
 		<footer className="CarInfoCard__content">
-		  <h2 className="CarInfoCard__title">{title}</h2>
-		  <span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} ₩</span>
+		  {car_title ? (
+			<h2 className="CarInfoCard__title">{car_title}</h2>
+		  ) : (
+			<h2 className="CarInfoCard__title-placeholder" />
+		  )}
+		  {price ? (
+			<span className="CarInfoCard__price">{price.toLocaleString("ru-RU")} ₩</span>
+		  ) : (
+			<h2 className="CarInfoCard__price-placeholder" />
+		  )}
 		  <ul className="CarInfoCard__details">
-			{[production, mileage, engine_capacity, drive].map((opt) => (
-			  <Fragment key={opt}>
-				<PositionDetails>{opt}</PositionDetails>
+			{[production, mileage, engine_capacity, drive].map((opt, index) => (
+			  <Fragment key={index}>
+				<PositionDetails>{opt || ""}</PositionDetails>
 			  </Fragment>
 			))}
 		  </ul>
@@ -71,4 +87,6 @@ export const CarInfoCard: FC<ICarInfoCardProps> = memo((props) => {
 	  </div>
 	</article>
   );
-});
+};
+
+

@@ -7,7 +7,8 @@ interface IPositionDetailsProps {
 
 export const PositionDetails:FC<IPositionDetailsProps> = memo(({children}) => {
   return (
-	<li className="PositionDetails">
+	<li className={`PositionDetails`}>
+	  {children === "" && <div className={'PositionDetails__text-placeholder'}/>}
 	  {children}
 	</li>
   );

@@ -35,7 +35,7 @@ export const CustomListItem: FC<ICustomListItemProps> = (props) => {
 
 	  <label className="CustomListItem__label">{value}</label>
 
-	  {!multi && selected && <DoneIcon width={20} height={16} fill={"var(--second-color-emphasis)"} />}
+	  {!multi && selected && <DoneIcon width={20} height={16} fill={"#fff"} />}
 	</li>
   );
 };

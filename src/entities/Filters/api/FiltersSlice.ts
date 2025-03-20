@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IFilters, ISetFilters, SortByType} from "@/entities/cars/api/CarsPage.type.ts";
+import { ISetFilters} from "@/entities/cars/api/CarsPage.type.ts";
 
 interface IStateInit{
   filters: ISetFilters,
@@ -25,7 +25,7 @@ const initialState: IStateInit = {
 		startAt:"",
 	  },
 	  bodyType:"",
-	  fuelType:""
+	  fuelType:[]
 	},
 	liveTime:{
 	  endAt:"",
@@ -54,9 +54,11 @@ const FiltersSlice = createSlice({
 	  }
 	  obj[keys[keys.length - 1]] = value;
 	},
-
 	setMark: (state, action: PayloadAction<[string,number][]>) => {
 	  state.filters.car.mark = action.payload;
+	},
+	setFuel: (state, action: PayloadAction<[string,number][]>) => {
+	  state.filters.features.fuelType = action.payload;
 	},
 	setModel: (state, action: PayloadAction<[string,number][]>) => {
 	  state.filters.car.model = action.payload;
@@ -64,6 +66,6 @@ const FiltersSlice = createSlice({
   }
 })
 
-export const {setFilter,setMark} = FiltersSlice.actions;
+export const {setFuel,setMark,setModel} = FiltersSlice.actions;
 export default FiltersSlice.reducer
 

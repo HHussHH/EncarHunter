@@ -38,9 +38,10 @@
 
   }
   &-active{
-    color:var(--second-color-emphasis);
-    fill: var(--second-color-emphasis);
-    background-color: #31519d49;
+    color:#fff;
+    fill: #fff;
+    background-color: #3D4381;
+    border: 3px solid #404DE0;
   }
   &-selected{
     color:rgba(49,81,157,0.2);

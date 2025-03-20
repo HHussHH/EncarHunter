@@ -24,30 +24,30 @@ export const CarList: FC<ICarListProps> = memo(() => {
   return (
 	<article className="CarList">
 	  {
-		cars.length > 0 ? cars.map((item) => (
+		(cars.length > 0) ? cars.map((item) => (
 		  <CarInfoCard
-			title={`${item.brand} ${item.model}`}
+			car_title={`${item.brand} ${item.model}`}
 			key={item.id}
 			carId={item.id}
 			onClick={() => handleClick(item.id.toString())}
 			mileage={`${item.milleage} км`}
 			price={item.price}
 			engine_capacity={"2 199 куб. см"}
-			drive={`${item.badge.split(" ")[3] ? item.badge.split(" ")[3] : ""}`}
+			drive={`${item.badge.split(" ")[0] ? item.badge.split(" ")[0] : ""}`}
 			production={item.form_year.toString()}
 		  />
 		)) :
 
 		  [1,2,3,4,5,6].map((plch) => <CarInfoCard
-			title={`Загрузка...`}
+			car_title={null}
 			key={plch}
-			carId={plch}
+			carId={null}
 			onClick={() => {}}
-			mileage={`Загрузка...`}
-			price={0}
-			engine_capacity={"Загрузка..."}
-			drive={`Загрузка...`}
-			production={'Загрузка...'}
+			mileage={null}
+			price={null}
+			engine_capacity={null}
+			drive={null}
+			production={null}
 		  />)
 	  }
 	</article>

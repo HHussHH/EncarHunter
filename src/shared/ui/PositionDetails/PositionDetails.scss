@@ -4,12 +4,68 @@
   font-size: 14px;
   display: flex;
   align-items: center;
-  padding: 4px;
+  padding: 4px 6px;
   justify-content: center;
   border-radius: 7px;
   height: 24px;
   width: max-content;
+  min-width: 44px;
+  min-height: 24px;
   &:first-child{
+    width: 64px;
     background: var(--second-color-emphasis);
+    .PositionDetails__text-placeholder{
+      width: 47px;
+      height: 10px;
+      opacity: 0.4;
+      border-radius: 2px;
+      background: linear-gradient(90deg,
+              rgba(185, 185, 185, 0.3) 0%,
+              rgba(255, 255, 255, 0.7) 50%,
+              rgba(185, 185, 185, 0.3) 100%);
+      background-size: 250% 100%;
+      animation: placeholderShimmer 2.5s infinite linear;
+
+    }
+  }
+  &:last-child{
+    .PositionDetails__text-placeholder{
+      width: 34px;
+      height: 10px;
+      opacity: 0.4;
+      border-radius: 2px;
+      background: linear-gradient(90deg,
+              rgba(185, 185, 185, 0.3) 0%,
+              rgba(255, 255, 255, 0.7) 50%,
+              rgba(185, 185, 185, 0.3) 100%);
+      background-size: 250% 100%;
+      animation: placeholderShimmer 2.5s infinite linear;
+    }
+  }
+  &:nth-child(+3){
+    .PositionDetails__text-placeholder{
+      width: 92px;
+      height: 10px;
+      opacity: 0.4;
+      border-radius: 2px;
+      background: linear-gradient(90deg,
+              rgba(185, 185, 185, 0.3) 0%,
+              rgba(255, 255, 255, 0.7) 50%,
+              rgba(185, 185, 185, 0.3) 100%);
+      background-size: 250% 100%;
+      animation: placeholderShimmer 2.5s infinite linear;
+    }
+  }
+  &__text-placeholder{
+    width: 66px;
+    height: 10px;
+    opacity: 0.4;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+            rgba(185, 185, 185, 0.3) 0%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(185, 185, 185, 0.3) 100%);
+    background-size: 250% 100%;
+    animation: placeholderShimmer 2.5s infinite linear;
   }
 }

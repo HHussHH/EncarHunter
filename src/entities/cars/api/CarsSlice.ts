@@ -16,6 +16,8 @@ export interface IFetchCar{
 }
 interface StateCars extends IFetchCar {
   isViewDetails:boolean,
+  carLoading:boolean,
+  imgSrc:string,
 }
  interface IStateInit{
    filters: IFilters,
@@ -67,9 +69,12 @@ const CarsSlice = createSlice({
   name:"CarsSlice",
   initialState,
   reducers:{
-    changeLoadStatus: (state, action:PayloadAction<boolean>) => {
-      state.carsLoading = action.payload;
-    },
+    changeLoadStatus: (state, action:PayloadAction<{ status:boolean, carId:number }>) => {
+      const car = state.cars.find(car => car.id === action.payload.carId);
+      if (car) {
+        car.carLoading = action.payload.status; // Предполагаем, что у машины есть поле `loading`
+      }
+      },
     updateFilter: (state, action: PayloadAction<UpdateFilterPayload>) => {
       const { path, value } = action.payload;
       const keys = path.split(".");
@@ -80,7 +85,13 @@ const CarsSlice = createSlice({
       obj[keys[keys.length - 1]] = value;
     },
     setCars: (state, action: PayloadAction<IFetchCar[]>) => {
-      state.cars = action.payload.map(car => ({...car,isViewDetails:false}));
+      state.cars = action.payload.map(car => ({...car,isViewDetails:false,carLoading:false,imgSrc:""}));
+    },
+    changeCarPhoto: (state, action:PayloadAction<{ src:string, carId:number }>) => {
+      const car = state.cars.find(car => car.id === action.payload.carId);
+      if (car) {
+        car.imgSrc = action.payload.src; // Предполагаем, что у машины есть поле `loading`
+      }
     },
     changeViewDetails: (state,action:PayloadAction<{id:number}>) => {
       state.cars.filter((car) => car.id === action.payload.id)[0].isViewDetails = true
@@ -88,6 +99,6 @@ const CarsSlice = createSlice({
   }
 })
 
-export const {updateFilter,changeViewDetails,setCars,changeLoadStatus} = CarsSlice.actions;
+export const {updateFilter,changeViewDetails,changeCarPhoto,setCars,changeLoadStatus} = CarsSlice.actions;
 export default CarsSlice.reducer
 

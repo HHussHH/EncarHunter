@@ -57,12 +57,11 @@ export const FiltersSystem:FC<IFiltersSystemProps> = () => {
 		  </FiltersSystemInput>
 		  </div>
 		  <div className={'FiltersSystem__list__el'}>
-		  <FiltersSystemInput path={'filters.car.model'}
+		  <FiltersSystemInput path={'filters.features.fuelType'}
 							  title={"Выберите тип топлива"}
-							  isMulti={true}
-							  isActive={!!CARS_FILTERS.car.model}
-							  data={{variables:CARS_FILTERS.car.model,options:CARS_FILTERS.car.model.split(", ")}}>
-			{CARS_FILTERS.car.model ? CARS_FILTERS.car.model : "Тип топлива" }
+							  isActive={!!CARS_FILTERS.features.fuelType}
+							  data={{variables:CARS_FILTERS.features.fuelType,options:FILTERS.features.fuelType}}>
+			{valueViews(CARS_FILTERS.features.fuelType,"Тип топлива")}
 		  </FiltersSystemInput>
 		  </div>
 		  <div className={'FiltersSystem__list__el'}>

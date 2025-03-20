@@ -1,9 +1,13 @@
 import {useEffect, useState,} from "react";
 import { useNavigate,useLocation} from 'react-router-dom';
 import {Routers} from "./routes/Routers.tsx";
-import { useLazyGetAllFiltersQuery} from "@/entities/Filters/api/FiltersApi.ts";
-import { setMark} from "@/entities/Filters/api/FiltersSlice.ts";
-import {useAppDispatch} from "@/shared/api/types/redux.type.ts";
+import {
+  useLazyGetAllFiltersQuery,
+  useLazyGetAllFuelQuery,
+  useLazyGetAllModulesQuery
+} from "@/entities/Filters/api/FiltersApi.ts";
+import {setFuel, setMark, setModel} from "@/entities/Filters/api/FiltersSlice.ts";
+import {useAppDispatch, useAppSelector} from "@/shared/api/types/redux.type.ts";
 import {useLazyGetCarsWithFiltersQuery} from "@/entities/cars/api/CarsApi.ts";
 import {setCars} from "@/entities/cars/api/CarsSlice.ts";
 const TG_WEB_APP = window.Telegram.WebApp;
@@ -14,8 +18,10 @@ function App() {
   const [isWide, setIsWide] = useState(window.innerWidth <= 450);
   const [target] = useLazyGetAllFiltersQuery()
   const [getAllCar] = useLazyGetCarsWithFiltersQuery()
-
+  const [getFuel] = useLazyGetAllFuelQuery();
+  const [getModels] = useLazyGetAllModulesQuery();
   const dispatch = useAppDispatch()
+  const state = useAppSelector((state) => state.cars)
   useEffect(() => {
     const handleResize = () => setIsWide(window.innerWidth <= 450);
 
@@ -72,12 +78,22 @@ function App() {
       const inf = Object.entries(data.data!)
       dispatch(setMark(inf))
     })
+    getFuel().then((data )=>{
+      const inf = Object.entries(data.data!)
+      dispatch(setFuel(inf))
+    })
     getAllCar().then((data) =>{
-      console.log(data.data!.result)
       dispatch(setCars(data.data!.result))
     })
   }, []);
 
+  useEffect(() => {
+    const arr = state.filters.car.mark.split(", ")
+    getModels({filters:arr}).then((data )=>{
+      const inf = Object.entries(data.data!)
+      dispatch(setModel(inf))
+    })
+  }, [state.filters.car.mark]);
   return (
     <>
       <Routers/>
